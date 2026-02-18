@@ -2,14 +2,18 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 
+/**
+ * analyzeBottleneck: Uses Gemini 3 Pro to analyze business bottlenecks and suggest
+ * AI-driven automation strategies with ROI estimates.
+ */
 export const analyzeBottleneck = async (bottleneck: string): Promise<AnalysisResult> => {
+  // Directly initializing with process.env.API_KEY as per system requirements.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   try {
-    // Initialize GoogleGenAI inside the function to prevent top-level crashes during module load.
-    // This ensures the site renders even if the environment variable is evaluated later.
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    
+    // Using gemini-3-pro-preview for complex business reasoning and strategic analysis.
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3-pro-preview",
       contents: `Analyze this business bottleneck and provide a professional AI strategy: "${bottleneck}"`,
       config: {
         responseMimeType: "application/json",
@@ -22,7 +26,7 @@ export const analyzeBottleneck = async (bottleneck: string): Promise<AnalysisRes
             },
             recommendedSolution: {
               type: Type.STRING,
-              description: "A concise 2-sentence AI-driven solution.",
+              description: "A concise 2-sentence AI-driven solution strategy.",
             },
             implementationTime: {
               type: Type.STRING,
@@ -31,30 +35,22 @@ export const analyzeBottleneck = async (bottleneck: string): Promise<AnalysisRes
           },
           required: ["efficiencyGain", "recommendedSolution", "implementationTime"],
         },
-        systemInstruction: "You are a senior AI business consultant at Opound. Be precise, professional, and focus on practical automation and custom RAG solutions.",
+        systemInstruction: "You are the Lead AI Consultant at Opound. You provide authoritative, technical, and high-ROI advice. Focus on automation, custom RAG, and agentic workflows.",
       },
     });
 
-    // Extract text directly from the response object
     const text = response.text;
-    if (!text) {
-      throw new Error("Empty response from AI model");
-    }
+    if (!text) throw new Error("API returned an empty response.");
 
     return JSON.parse(text.trim());
   } catch (error: any) {
-    console.error("AI Analysis failed:", error);
+    console.error("Gemini Analysis Error:", error);
     
-    // Help identify if the environment variable is actually missing in Vercel
-    if (error?.message?.includes("API Key")) {
-      console.error("CONFIGURATION ERROR: process.env.API_KEY is not defined in your environment variables.");
-    }
-
-    // Fallback response ensures the UI remains functional and professional even if the API call fails
+    // Fallback result for graceful failure in case of API quotas or transient errors.
     return {
       efficiencyGain: "10+ Hours / Week",
-      recommendedSolution: "Our team will design a custom automation workflow integrated with your current tech stack.",
-      implementationTime: "2-4 Weeks",
+      recommendedSolution: "We recommend an automated workflow audit to identify specific integration points for custom AI agents.",
+      implementationTime: "Custom",
     };
   }
 };
