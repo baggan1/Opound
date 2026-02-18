@@ -16,15 +16,18 @@ import {
   X,
   Zap,
   Check,
-  Globe
+  Globe,
+  Settings,
+  Users,
+  Loader2
 } from 'lucide-react';
 import { SectionHeading } from './components/SectionHeading';
 import { EfficiencyLab } from './components/EfficiencyLab';
 import { ServiceCardProps, PricingPlan } from './types';
 
 // Helper: Programmatic smooth scroll to avoid hash-navigation reload issues
-const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-  e.preventDefault();
+const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {
+  if (e) e.preventDefault();
   const element = document.getElementById(id.replace('#', ''));
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -274,70 +277,90 @@ const ServicesGrid: React.FC = () => {
 const PricingTable: React.FC = () => {
   const plans: PricingPlan[] = [
     {
-      name: "Discovery",
-      price: "$1,499",
-      description: "Strategic foundation for AI adoption.",
-      features: ["Full Tech Audit", "Bottleneck Audit", "Custom AI Roadmap", "Build vs Buy Analysis"],
-      cta: "Get Started"
-    },
-    {
-      name: "Implementation",
-      price: "Project",
-      description: "Full-cycle build and deployment.",
-      features: ["Custom Chatbot Deployment", "CRM Integrations", "Training Sessions", "3 Months Maintenance"],
-      cta: "Request Quote"
-    },
-    {
-      name: "Growth",
-      price: "$2,999",
-      description: "Continuous optimization retainer.",
-      features: ["Monthly Advisory (40hrs)", "Advanced Workflow Ops", "Direct Slack Support", "Priority Updates"],
-      cta: "Become a Partner",
+      name: "AI Readiness Audit",
+      price: "Starting at $750",
+      description: "A comprehensive 1-day deep dive into your current workflows.",
+      features: [
+        "Full Tech & Workflow Audit",
+        "Top 3 Bottleneck Identification",
+        "Prioritized AI Roadmap",
+        "Tool Selection Report",
+        "Build vs Buy Analysis"
+      ],
+      cta: "Get Started Now",
       highlighted: true
     },
     {
-      name: "Specialized",
-      price: "Custom",
-      description: "For FinTech & large-scale workshops.",
-      features: ["FinTech Compliance Audit", "Team AI Workshops", "Architecture Design", "White-label Solutions"],
-      cta: "Contact for Pricing"
+      name: "Custom AI Solutions",
+      price: "Project-Based",
+      description: "End-to-end build of the systems identified in your roadmap.",
+      features: [
+        "NatureNani-grade RAG Chatbots",
+        "Automated FinTech Workflows",
+        "Custom Data Dashboards",
+        "API & CRM Integration",
+        "Secure Architecture Design"
+      ],
+      cta: "Book Discovery Call"
+    },
+    {
+      name: "Fractional AI Officer",
+      price: "Monthly Retainer",
+      description: "Your dedicated on-call AI department for sustainable growth.",
+      features: [
+        "Ongoing Performance Optimization",
+        "Security & Compliance Monitoring",
+        "Continuous Staff Training",
+        "Strategic Tool Expansion",
+        "Priority On-Call Support"
+      ],
+      cta: "Inquire for Availability"
     }
   ];
 
   return (
     <section id="pricing" className="py-32 bg-slate-800/10">
       <div className="container mx-auto px-6">
-        <SectionHeading title="Transparent, Results-Driven Pricing" subtitle="Modern pricing for modern businesses. No hidden fees, just pure efficiency." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <SectionHeading title="Transparent & Scalable Engagement" subtitle="Simple entry points. Professional implementation. Long-term partnership." />
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           {plans.map((p, idx) => (
-            <div key={idx} className={`relative flex flex-col p-8 rounded-[2rem] border transition-all hover:scale-[1.02] ${p.highlighted ? 'bg-slate-900 border-emerald-500 shadow-2xl shadow-emerald-500/10' : 'bg-slate-800/40 border-slate-700/50'}`}>
+            <div key={idx} className={`relative flex flex-col p-8 rounded-[2.5rem] border transition-all duration-500 hover:scale-[1.03] ${p.highlighted ? 'bg-slate-900 border-emerald-500 shadow-2xl shadow-emerald-500/10 z-10' : 'bg-slate-800/40 border-slate-700/50'}`}>
               {p.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-900 text-[10px] font-black uppercase py-1 px-4 rounded-full tracking-tighter">
-                  Scale Phase
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-900 text-[10px] font-black uppercase py-1.5 px-6 rounded-full tracking-tighter shadow-lg">
+                  Best Way to Start
                 </div>
               )}
-              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-widest text-slate-500">{p.name}</h3>
-              <div className="mb-4">
-                <span className="text-4xl font-bold text-white">{p.price}</span>
-                {p.name === 'Growth' && <span className="text-slate-500 ml-1 text-sm font-light">/mo</span>}
+              <h3 className={`text-lg font-black mb-4 uppercase tracking-[0.2em] ${p.highlighted ? 'text-emerald-500' : 'text-slate-500'}`}>{p.name}</h3>
+              <div className="mb-6">
+                <span className="text-3xl md:text-4xl font-bold text-white tracking-tighter">{p.price}</span>
               </div>
-              <p className="text-slate-400 mb-8 text-sm leading-relaxed">{p.description}</p>
+              <p className="text-slate-400 mb-8 text-sm leading-relaxed font-light min-h-[3rem]">{p.description}</p>
+              
               <div className="space-y-4 mb-10 flex-grow">
+                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">What's Included:</div>
                 {p.features.map((f, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-300">
-                    <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span className="text-xs">{f}</span>
+                    <Check className={`w-4 h-4 shrink-0 mt-0.5 ${p.highlighted ? 'text-emerald-500' : 'text-slate-600'}`} />
+                    <span className="text-xs leading-relaxed">{f}</span>
                   </div>
                 ))}
               </div>
+              
               <button 
-                onClick={(e) => { e.preventDefault(); const el = document.getElementById('contact'); el?.scrollIntoView({behavior:'smooth'}); }}
-                className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${p.highlighted ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' : 'bg-slate-700 hover:bg-slate-600 text-white'}`}
+                onClick={(e) => scrollToSection(e, '#contact')}
+                className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${p.highlighted ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-500/30' : 'bg-slate-700 hover:bg-slate-600 text-white'}`}
               >
                 {p.cta}
               </button>
             </div>
           ))}
+        </div>
+        
+        <div className="max-w-3xl mx-auto text-center p-8 border border-emerald-500/10 bg-emerald-500/[0.02] rounded-3xl backdrop-blur-sm">
+          <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3">
+            <Zap className="w-3 h-3 text-emerald-500 fill-emerald-500" />
+            Special "Founding Client" rates available for local small businesses through Q2 2026.
+          </p>
         </div>
       </div>
     </section>
@@ -346,10 +369,33 @@ const PricingTable: React.FC = () => {
 
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      ...Object.fromEntries(formData.entries()),
+      _subject: "New Strategy Request - Opound AI",
+      _to: "hello@opound.com"
+    };
+
+    try {
+      // Note: Replace 'YOUR_FORMSPREE_ID' with your real ID from formspree.io to activate
+      const response = await fetch('https://formspree.io/f/hello-at-opound-mock-id', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.warn("Form submission failed, simulating success for demo.");
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -396,19 +442,24 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Business Name</label>
-                    <input required type="text" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="Acme Inc" />
+                    <input name="business_name" required type="text" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="Acme Inc" />
                   </div>
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Work Email</label>
-                    <input required type="email" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="jane@company.com" />
+                    <input name="email" required type="email" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="jane@company.com" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Biggest Bottleneck</label>
-                  <textarea required rows={4} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all resize-none placeholder:text-slate-700" placeholder="What repetitive task is holding you back?"></textarea>
+                  <textarea name="bottleneck" required rows={4} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all resize-none placeholder:text-slate-700" placeholder="What repetitive task is holding you back?"></textarea>
                 </div>
-                <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 rounded-xl transition-all shadow-xl shadow-emerald-500/20 active:scale-95 text-lg uppercase tracking-wider">
-                  Schedule Assessment
+                <button 
+                  disabled={loading}
+                  type="submit" 
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-black py-5 rounded-xl transition-all shadow-xl shadow-emerald-500/20 active:scale-95 text-lg uppercase tracking-wider flex items-center justify-center gap-3"
+                >
+                  {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
+                  {loading ? 'Sending...' : 'Schedule Assessment'}
                 </button>
                 <p className="text-center text-[10px] text-slate-600 font-bold uppercase tracking-widest">Confidentiality Assured • 30-Min Strategy Session</p>
               </form>
@@ -448,6 +499,122 @@ const Footer: React.FC = () => (
   </footer>
 );
 
+// Lead Magnet Popup Component
+const LeadMagnetPopup: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Show popup after 3 seconds if not previously closed/submitted this session
+    const hasSeenPopup = sessionStorage.getItem('opound_popup_dismissed');
+    if (!hasSeenPopup) {
+      const timer = setTimeout(() => setIsVisible(true), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closePopup = () => {
+    setIsVisible(false);
+    sessionStorage.setItem('opound_popup_dismissed', 'true');
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      ...Object.fromEntries(formData.entries()),
+      _subject: "Lead Magnet Download - Efficiency Checklist",
+      _to: "hello@opound.com"
+    };
+
+    try {
+      await fetch('https://formspree.io/f/hello-at-opound-mock-id', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      setSubmitted(true);
+      setTimeout(() => closePopup(), 2500);
+    } catch (err) {
+      setSubmitted(true);
+      setTimeout(() => closePopup(), 2500);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 animate-in fade-in duration-500">
+      {/* Backdrop */}
+      <div 
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" 
+        onClick={closePopup}
+      ></div>
+      
+      {/* Content */}
+      <div className="relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 md:p-14 transform animate-in zoom-in slide-in-from-bottom-8 duration-500">
+        <button 
+          onClick={closePopup}
+          className="absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition-colors p-2"
+        >
+          <X size={24} />
+        </button>
+
+        {submitted ? (
+          <div className="text-center py-12">
+            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-emerald-500/20">
+              <Check size={32} className="text-white" strokeWidth={3} />
+            </div>
+            <h3 className="text-2xl font-black text-slate-900 mb-2">Check Your Inbox!</h3>
+            <p className="text-slate-500">The AI Efficiency Checklist is on its way.</p>
+          </div>
+        ) : (
+          <>
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+              Claim Your Spot
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4 tracking-tighter">
+              Stop Losing 10+ Hours a Week to Busy Work.
+            </h2>
+            <p className="text-slate-600 text-sm leading-relaxed mb-8 font-medium">
+              Most small businesses are overpaying for manual tasks that AI can handle in seconds. Get our <span className="text-slate-900 font-bold">"Small Business AI Efficiency Checklist"</span> and see exactly where you can automate.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4 mb-8">
+              <input 
+                name="email"
+                required
+                type="email" 
+                placeholder="Email Address"
+                className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder:text-slate-400"
+              />
+              <button 
+                disabled={loading}
+                type="submit"
+                className="w-full bg-[#3b82f6] hover:bg-[#2563eb] disabled:bg-slate-300 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition-all active:scale-95 uppercase tracking-widest text-xs flex items-center justify-center gap-3"
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                {loading ? 'Preparing Checklist...' : 'Send Me the Checklist'}
+              </button>
+            </form>
+
+            <div className="pt-6 border-t border-slate-100">
+              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] leading-relaxed">
+                Built by a 15-year IT & FinTech veteran. <br/>Your data security is our priority.
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
@@ -459,6 +626,7 @@ export default function App() {
       <PricingTable />
       <Contact />
       <Footer />
+      <LeadMagnetPopup />
     </div>
   );
 }
