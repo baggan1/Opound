@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowRight, 
-  Bot, 
-  Workflow, 
-  BarChart3, 
-  ShieldCheck, 
+import {
+  ArrowRight,
+  Bot,
+  Workflow,
+  BarChart3,
+  ShieldCheck,
   Search,
   CheckCircle2,
   ExternalLink,
@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { SectionHeading } from './components/SectionHeading';
 import { EfficiencyLab } from './components/EfficiencyLab';
+import { ROICalculator } from './components/ROICalculator';
 import { ServiceCardProps, PricingPlan } from './types';
 
 // Helper: Programmatic smooth scroll to avoid hash-navigation reload issues
@@ -65,17 +66,17 @@ const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8 text-slate-400 font-medium">
           {navLinks.map(link => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
               className="hover:text-emerald-500 transition-colors text-sm"
             >
               {link.name}
             </a>
           ))}
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             onClick={(e) => scrollToSection(e, '#contact')}
             className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20"
           >
@@ -94,18 +95,18 @@ const Navbar: React.FC = () => {
         <div className="flex flex-col items-center justify-center h-full gap-8">
           <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white"><X size={32} /></button>
           {navLinks.map(link => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              onClick={(e) => { setIsOpen(false); scrollToSection(e, link.href); }} 
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => { setIsOpen(false); scrollToSection(e, link.href); }}
               className="text-2xl font-bold text-white hover:text-emerald-500"
             >
               {link.name}
             </a>
           ))}
-          <a 
-            href="#contact" 
-            onClick={(e) => { setIsOpen(false); scrollToSection(e, '#contact'); }} 
+          <a
+            href="#contact"
+            onClick={(e) => { setIsOpen(false); scrollToSection(e, '#contact'); }}
             className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold"
           >
             Get Started
@@ -132,15 +133,15 @@ const Hero: React.FC = () => (
         We help small businesses identify bottlenecks and deploy custom AI solutions to reclaim 10+ hours a week. Professional grade automation for growing teams.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-        <a 
-          href="#contact" 
+        <a
+          href="#contact"
           onClick={(e) => scrollToSection(e, '#contact')}
           className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white text-lg font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-emerald-500/25 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center"
         >
           Book Readiness Assessment
         </a>
-        <a 
-          href="#services" 
+        <a
+          href="#services"
           onClick={(e) => scrollToSection(e, '#services')}
           className="w-full sm:w-auto bg-slate-800/50 hover:bg-slate-800 text-slate-200 text-lg font-bold px-10 py-5 rounded-2xl border border-slate-700/50 backdrop-blur-sm transition-all text-center"
         >
@@ -178,22 +179,22 @@ const ProvenTech: React.FC = () => (
         </div>
         <div className="w-full lg:w-[460px] relative group">
           <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full group-hover:bg-emerald-500/30 transition-colors"></div>
-          <a 
-            href="https://www.naturenani.com/about" 
-            target="_blank" 
+          <a
+            href="https://www.naturenani.com/about"
+            target="_blank"
             rel="noopener noreferrer"
             className="block relative bg-white border border-slate-200 rounded-3xl p-4 overflow-hidden shadow-2xl transition-all hover:-translate-y-2 duration-500 hover:shadow-emerald-500/10"
           >
             <div className="rounded-2xl w-full h-[300px] overflow-hidden bg-slate-50 relative border border-slate-100">
-              <img 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" 
-                alt="NatureNani Platform Screenshot" 
-                className="w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-700" 
+              <img
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
+                alt="NatureNani Platform Screenshot"
+                className="w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-white/40 backdrop-blur-[2px]">
                 <div className="bg-white/90 p-6 rounded-2xl shadow-xl border border-emerald-100">
                   <div className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-2">NatureNani.com</div>
-                  <h4 className="text-slate-900 font-bold text-xl mb-2 leading-tight">Understand Your Body. <br/>Heal Naturally.</h4>
+                  <h4 className="text-slate-900 font-bold text-xl mb-2 leading-tight">Understand Your Body. <br />Heal Naturally.</h4>
                   <div className="w-12 h-0.5 bg-emerald-500 mx-auto rounded-full"></div>
                 </div>
               </div>
@@ -262,8 +263,8 @@ const ServicesGrid: React.FC = () => {
   return (
     <section id="services" className="py-32">
       <div className="container mx-auto px-6">
-        <SectionHeading 
-          title="Enterprise Tech for Scaling Teams" 
+        <SectionHeading
+          title="Enterprise Tech for Scaling Teams"
           subtitle="Stop fighting your software. We specialize in low-maintenance, high-impact AI solutions that work while you sleep."
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -277,88 +278,90 @@ const ServicesGrid: React.FC = () => {
 const PricingTable: React.FC = () => {
   const plans: PricingPlan[] = [
     {
-      name: "AI Readiness Audit",
-      price: "Starting at $750",
-      description: "A comprehensive 1-day deep dive into your current workflows.",
+      name: "The AI Readiness Audit",
+      price: "Starting at $2,450",
+      description: "A deep-dive roadmap identifying $10k+ in monthly operational savings.",
       features: [
+        "Focus: Diagnosis",
         "Full Tech & Workflow Audit",
-        "Top 3 Bottleneck Identification",
+        "Top Bottleneck Identification",
         "Prioritized AI Roadmap",
-        "Tool Selection Report",
-        "Build vs Buy Analysis"
       ],
       cta: "Get Started Now",
       highlighted: true
     },
     {
-      name: "Custom AI Solutions",
-      price: "Project-Based",
-      description: "End-to-end build of the systems identified in your roadmap.",
+      name: "The Specialist Agent",
+      price: "Starting at $3,000/mo",
+      description: "A custom-built, autonomous agent with a performance-based upside.",
       features: [
-        "NatureNani-grade RAG Chatbots",
-        "Automated FinTech Workflows",
-        "Custom Data Dashboards",
-        "API & CRM Integration",
-        "Secure Architecture Design"
+        "Focus: Deployment",
+        "Booking, Triage, or RAG",
+        "CRM Integration",
+        "Performance Upside Tracking",
       ],
       cta: "Book Discovery Call"
     },
     {
       name: "Fractional AI Officer",
-      price: "Monthly Retainer",
-      description: "Your dedicated on-call AI department for sustainable growth.",
+      price: "Starting at $7,500/mo",
+      description: "Comprehensive AI strategy, staff training, and product management.",
       features: [
+        "Focus: Leadership",
+        "NatureNani-level expertise",
         "Ongoing Performance Optimization",
-        "Security & Compliance Monitoring",
-        "Continuous Staff Training",
         "Strategic Tool Expansion",
-        "Priority On-Call Support"
       ],
       cta: "Inquire for Availability"
     }
   ];
 
   return (
-    <section id="pricing" className="py-32 bg-slate-800/10">
+    <section id="pricing" className="py-32 bg-slate-950">
       <div className="container mx-auto px-6">
         <SectionHeading title="Transparent & Scalable Engagement" subtitle="Simple entry points. Professional implementation. Long-term partnership." />
+
+        <div className="mb-24">
+          <ROICalculator />
+        </div>
+
         <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           {plans.map((p, idx) => (
-            <div key={idx} className={`relative flex flex-col p-8 rounded-[2.5rem] border transition-all duration-500 hover:scale-[1.03] ${p.highlighted ? 'bg-slate-900 border-emerald-500 shadow-2xl shadow-emerald-500/10 z-10' : 'bg-slate-800/40 border-slate-700/50'}`}>
+            <div key={idx} className={`relative flex flex-col p-8 rounded-[2.5rem] border transition-all duration-500 hover:scale-[1.03] ${p.highlighted ? 'bg-blue-900/20 border-blue-500 shadow-2xl shadow-blue-500/20 z-10' : 'bg-slate-900 border-slate-800'}`}>
               {p.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-900 text-[10px] font-black uppercase py-1.5 px-6 rounded-full tracking-tighter shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-slate-900 text-[10px] font-black uppercase py-1.5 px-6 rounded-full tracking-tighter shadow-lg">
                   Best Way to Start
                 </div>
               )}
-              <h3 className={`text-lg font-black mb-4 uppercase tracking-[0.2em] ${p.highlighted ? 'text-emerald-500' : 'text-slate-500'}`}>{p.name}</h3>
+              <h3 className={`text-lg font-black mb-4 uppercase tracking-[0.2em] ${p.highlighted ? 'text-blue-400' : 'text-slate-400'}`}>{p.name}</h3>
               <div className="mb-6">
-                <span className="text-3xl md:text-4xl font-bold text-white tracking-tighter">{p.price}</span>
+                <span className="text-3xl md:text-4xl font-bold text-slate-100 tracking-tighter">{p.price}</span>
               </div>
               <p className="text-slate-400 mb-8 text-sm leading-relaxed font-light min-h-[3rem]">{p.description}</p>
-              
+
               <div className="space-y-4 mb-10 flex-grow">
-                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">What's Included:</div>
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">What's Included:</div>
                 {p.features.map((f, i) => (
                   <div key={i} className="flex items-start gap-3 text-slate-300">
-                    <Check className={`w-4 h-4 shrink-0 mt-0.5 ${p.highlighted ? 'text-emerald-500' : 'text-slate-600'}`} />
+                    <Check className={`w-4 h-4 shrink-0 mt-0.5 ${p.highlighted ? 'text-blue-400' : 'text-slate-500'}`} />
                     <span className="text-xs leading-relaxed">{f}</span>
                   </div>
                 ))}
               </div>
-              
-              <button 
+
+              <button
                 onClick={(e) => scrollToSection(e, '#contact')}
-                className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${p.highlighted ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-500/30' : 'bg-slate-700 hover:bg-slate-600 text-white'}`}
+                className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${p.highlighted ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-500/30' : 'bg-slate-800 hover:bg-slate-700 text-slate-300'}`}
               >
                 {p.cta}
               </button>
             </div>
           ))}
         </div>
-        
-        <div className="max-w-3xl mx-auto text-center p-8 border border-emerald-500/10 bg-emerald-500/[0.02] rounded-3xl backdrop-blur-sm">
-          <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3">
-            <Zap className="w-3 h-3 text-emerald-500 fill-emerald-500" />
+
+        <div className="max-w-3xl mx-auto text-center p-8 border border-blue-500/10 bg-blue-500/[0.02] rounded-3xl backdrop-blur-sm">
+          <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3">
+            <Zap className="w-3 h-3 text-blue-500 fill-blue-500" />
             Special "Founding Client" rates available for local small businesses through Q2 2026.
           </p>
         </div>
@@ -403,9 +406,9 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto bg-slate-800/20 rounded-[3rem] overflow-hidden border border-slate-700/50 flex flex-col lg:flex-row backdrop-blur-md">
           <div className="flex-1 p-10 md:p-20 bg-slate-900/40 border-r border-slate-700/50">
-            <h2 className="text-4xl font-bold text-white mb-6 tracking-tighter">Ready to reclaim <br/><span className="text-emerald-500">10 hours a week?</span></h2>
+            <h2 className="text-4xl font-bold text-white mb-6 tracking-tighter">Ready to reclaim <br /><span className="text-emerald-500">10 hours a week?</span></h2>
             <p className="text-slate-400 mb-12 text-lg font-light leading-relaxed">Join 50+ businesses that have optimized their operations with Opound.</p>
-            
+
             <div className="space-y-10">
               <div className="flex items-center gap-6 group cursor-pointer" onClick={() => window.location.href = 'mailto:hello@opound.com'}>
                 <div className="w-14 h-14 rounded-2xl bg-emerald-500/5 flex items-center justify-center text-emerald-500 border border-emerald-500/10 group-hover:bg-emerald-500 group-hover:text-white transition-all">
@@ -453,9 +456,9 @@ const Contact: React.FC = () => {
                   <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Biggest Bottleneck</label>
                   <textarea name="bottleneck" required rows={4} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all resize-none placeholder:text-slate-700" placeholder="What repetitive task is holding you back?"></textarea>
                 </div>
-                <button 
+                <button
                   disabled={loading}
-                  type="submit" 
+                  type="submit"
                   className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-black py-5 rounded-xl transition-all shadow-xl shadow-emerald-500/20 active:scale-95 text-lg uppercase tracking-wider flex items-center justify-center gap-3"
                 >
                   {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
@@ -551,14 +554,14 @@ const LeadMagnetPopup: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 animate-in fade-in duration-500">
       {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" 
+      <div
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
         onClick={closePopup}
       ></div>
-      
+
       {/* Content */}
       <div className="relative bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden p-10 md:p-14 transform animate-in zoom-in slide-in-from-bottom-8 duration-500">
-        <button 
+        <button
           onClick={closePopup}
           className="absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition-colors p-2"
         >
@@ -586,14 +589,14 @@ const LeadMagnetPopup: React.FC = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4 mb-8">
-              <input 
+              <input
                 name="email"
                 required
-                type="email" 
+                type="email"
                 placeholder="Email Address"
                 className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder:text-slate-400"
               />
-              <button 
+              <button
                 disabled={loading}
                 type="submit"
                 className="w-full bg-[#3b82f6] hover:bg-[#2563eb] disabled:bg-slate-300 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition-all active:scale-95 uppercase tracking-widest text-xs flex items-center justify-center gap-3"
@@ -605,7 +608,7 @@ const LeadMagnetPopup: React.FC = () => {
 
             <div className="pt-6 border-t border-slate-100">
               <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] leading-relaxed">
-                Built by a 15-year IT & FinTech veteran. <br/>Your data security is our priority.
+                Built by a 15-year IT & FinTech veteran. <br />Your data security is our priority.
               </p>
             </div>
           </>
