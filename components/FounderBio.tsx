@@ -42,7 +42,7 @@ export const FounderBio: React.FC = () => {
                                 <li className="flex items-start gap-3">
                                     <span className="text-blue-500 mt-1">•</span>
                                     <span>
-                                        <strong>NatureNani:</strong> I designed and deployed this AI-powered wellness platform using advanced RAG (Retrieval-Augmented Generation) and custom data pipelines. <a href="https://www.naturenani.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-medium inline-flex items-baseline gap-1">[www.naturenani.com] <ExternalLink size={14} className="translate-y-0.5" /></a>
+                                        <strong>NatureNani:</strong> I designed and deployed this AI-powered wellness platform using advanced RAG (Retrieval-Augmented Generation) and custom data pipelines. <a href="https://www.naturenani.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-medium inline-flex items-baseline gap-1">www.naturenani.com <ExternalLink size={14} className="translate-y-0.5" /></a>
                                     </span>
                                 </li>
                             </ul>

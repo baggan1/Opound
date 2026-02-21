@@ -502,10 +502,8 @@ const LeadMagnetPopup: React.FC = () => {
         body: JSON.stringify(payload)
       });
       setSubmitted(true);
-      setTimeout(() => closePopup(), 2500);
     } catch (err) {
       setSubmitted(true);
-      setTimeout(() => closePopup(), 2500);
     } finally {
       setLoading(false);
     }
@@ -531,12 +529,21 @@ const LeadMagnetPopup: React.FC = () => {
         </button>
 
         {submitted ? (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-emerald-500/20">
+          <div className="text-center py-12 flex flex-col items-center">
+            <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-emerald-500/20">
               <Check size={32} className="text-white" strokeWidth={3} />
             </div>
-            <h3 className="text-2xl font-black text-slate-900 mb-2">Check Your Inbox!</h3>
-            <p className="text-slate-500">The AI Efficiency Checklist is on its way.</p>
+            <h3 className="text-2xl font-black text-slate-900 mb-2">You're All Set!</h3>
+            <p className="text-slate-500 mb-6">Click below to download your checklist.</p>
+            <a
+              href="/Opound_AI_Efficiency_Checklist.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#001F3F] hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform active:scale-95"
+            >
+              Download PDF Checklist
+            </a>
           </div>
         ) : (
           <>
