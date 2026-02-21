@@ -24,11 +24,26 @@ import {
 import { SectionHeading } from './components/SectionHeading';
 import { EfficiencyLab } from './components/EfficiencyLab';
 import { ROICalculator } from './components/ROICalculator';
+import { FounderBio } from './components/FounderBio';
+import { TermsOfService } from './components/TermsOfService';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { ServiceCardProps, PricingPlan } from './types';
 
 // Helper: Programmatic smooth scroll to avoid hash-navigation reload issues
 const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, id: string) => {
   if (e) e.preventDefault();
+
+  if (window.location.hash === '#terms' || window.location.hash === '#privacy') {
+    window.location.hash = '';
+    setTimeout(() => {
+      const element = document.getElementById(id.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+    return;
+  }
+
   const element = document.getElementById(id.replace('#', ''));
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -56,11 +71,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className="flex items-center gap-2 group cursor-pointer" onClick={() => { window.location.hash = ''; window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-white text-2xl group-hover:rotate-12 transition-transform">
             O
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">OPOUND</span>
+          <span className="text-xl font-bold tracking-tight text-white">Opound AI Consulting</span>
         </div>
 
         {/* Desktop Nav */}
@@ -371,36 +386,6 @@ const PricingTable: React.FC = () => {
 };
 
 const Contact: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const payload = {
-      ...Object.fromEntries(formData.entries()),
-      _subject: "New Strategy Request - Opound AI",
-      _to: "hello@opound.com"
-    };
-
-    try {
-      // Note: Replace 'YOUR_FORMSPREE_ID' with your real ID from formspree.io to activate
-      const response = await fetch('https://formspree.io/f/hello-at-opound-mock-id', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      setSubmitted(true);
-    } catch (err) {
-      console.warn("Form submission failed, simulating success for demo.");
-      setSubmitted(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <section id="contact" className="py-32 relative">
       <div className="container mx-auto px-6">
@@ -431,42 +416,19 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex-1 p-10 md:p-20 relative">
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-20 animate-in fade-in zoom-in">
-                <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-2xl shadow-emerald-500/30">
-                  <Check size={40} className="text-slate-900" strokeWidth={3} />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Strategy Request Received</h3>
-                <p className="text-slate-400">Our senior consultant will be in touch within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Business Name</label>
-                    <input name="business_name" required type="text" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="Acme Inc" />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Work Email</label>
-                    <input name="email" required type="email" className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-700" placeholder="jane@company.com" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Biggest Bottleneck</label>
-                  <textarea name="bottleneck" required rows={4} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all resize-none placeholder:text-slate-700" placeholder="What repetitive task is holding you back?"></textarea>
-                </div>
-                <button
-                  disabled={loading}
-                  type="submit"
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-black py-5 rounded-xl transition-all shadow-xl shadow-emerald-500/20 active:scale-95 text-lg uppercase tracking-wider flex items-center justify-center gap-3"
-                >
-                  {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
-                  {loading ? 'Sending...' : 'Schedule Assessment'}
-                </button>
-                <p className="text-center text-[10px] text-slate-600 font-bold uppercase tracking-widest">Confidentiality Assured • 30-Min Strategy Session</p>
-              </form>
-            )}
+          <div className="flex-1 p-10 md:p-12 relative flex flex-col justify-center items-center bg-slate-900/60">
+            {/* Zoho Form Container with Deep Navy Border and Subtle Shadow */}
+            <div className="w-full max-w-lg bg-white rounded-2xl border-4 border-[#001F3F] p-2 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+              <iframe
+                aria-label="Client Details"
+                frameBorder="0"
+                style={{ height: '500px', width: '99%', border: 'none' }}
+                src="https://forms.zohopublic.com/navillaopo1/form/ClientDetails/formperma/slPbK0cG8ddA1RZeQTDUiAMHbzezHaVUaJ6UwwLdvKU"
+              ></iframe>
+            </div>
+            <p className="mt-6 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+              Confidentiality Assured • Free 30-Min Discovery Session
+            </p>
           </div>
         </div>
       </div>
@@ -478,11 +440,11 @@ const Footer: React.FC = () => (
   <footer className="py-20 border-t border-slate-800/50 bg-slate-950/30">
     <div className="container mx-auto px-6">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => { window.location.hash = ''; window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-white text-lg">
             O
           </div>
-          <span className="text-xl font-bold text-white tracking-tighter">OPOUND</span>
+          <span className="text-xl font-bold text-white tracking-tighter">Opound AI Consulting</span>
         </div>
         <div className="flex flex-wrap justify-center gap-10 text-slate-500 text-sm font-bold uppercase tracking-widest">
           <a href="#services" onClick={(e) => scrollToSection(e, '#services')} className="hover:text-white transition-colors">Services</a>
@@ -492,10 +454,10 @@ const Footer: React.FC = () => (
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t border-slate-800/30 text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">
-        <div>© {new Date().getFullYear()} OPOUND CONSULTING LLC. ALL RIGHTS RESERVED.</div>
+        <div>© {new Date().getFullYear()} OPOUND LLC. ALL RIGHTS RESERVED.</div>
         <div className="flex gap-8">
-          <a href="#" className="hover:text-emerald-500 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-emerald-500 transition-colors">Terms of Service</a>
+          <a href="#privacy" className="hover:text-emerald-500 transition-colors">Privacy Policy</a>
+          <a href="#terms" className="hover:text-emerald-500 transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -619,17 +581,42 @@ const LeadMagnetPopup: React.FC = () => {
 };
 
 export default function App() {
+  const [currentView, setCurrentView] = useState<'home' | 'tos' | 'privacy'>('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#terms') {
+        setCurrentView('tos');
+      } else if (hash === '#privacy') {
+        setCurrentView('privacy');
+      } else {
+        setCurrentView('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <div className="min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
       <Navbar />
-      <Hero />
-      <ProvenTech />
-      <EfficiencyLab />
-      <ServicesGrid />
-      <PricingTable />
-      <Contact />
+      {currentView === 'home' && (
+        <>
+          <Hero />
+          <ProvenTech />
+          <EfficiencyLab />
+          <ServicesGrid />
+          <FounderBio />
+          <PricingTable />
+          <Contact />
+        </>
+      )}
+      {currentView === 'tos' && <TermsOfService />}
+      {currentView === 'privacy' && <PrivacyPolicy />}
       <Footer />
-      <LeadMagnetPopup />
+      {currentView === 'home' && <LeadMagnetPopup />}
     </div>
   );
 }
