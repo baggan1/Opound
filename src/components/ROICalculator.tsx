@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useROI } from '../context/ROIContext';
 
 const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -9,29 +11,17 @@ const formatCurrency = (amount: number) => {
 };
 
 export const ROICalculator: React.FC = () => {
-    const [employees, setEmployees] = useState(5);
-    const [hours, setHours] = useState(5);
-    const [rate, setRate] = useState(42);
-    const [losingAmount, setLosingAmount] = useState(4200);
-    const [opoundCost, setOpoundCost] = useState(2500); // Wait, new tier 1 price is $2450.
-
-    const WEEKS_PER_MONTH = 4;
-
-    useEffect(() => {
-        const totalHoursPerMonth = employees * hours * WEEKS_PER_MONTH;
-        const loss = totalHoursPerMonth * rate;
-
-        let cost = 2450; // New base starting price
-        if (loss > 10000) {
-            cost = Math.max(2450, Math.floor(loss * 0.20)); // Scales up safely
-        }
-
-        setLosingAmount(loss);
-        setOpoundCost(cost);
-    }, [employees, hours, rate]);
+    const navigate = useNavigate();
+    const {
+        employees, setEmployees,
+        hours, setHours,
+        rate, setRate,
+        losingAmount,
+        opoundCost
+    } = useROI();
 
     return (
-        <div className="w-full max-w-lg mx-auto bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 md:p-10 shadow-2xl shadow-blue-900/20">
+        <div className="w-full bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-[2.5rem] p-8 md:p-10 shadow-2xl shadow-blue-900/20">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-2">ROI Calculator</h2>
                 <p className="text-slate-400 text-sm">Discover how much manual tasks are costing your business.</p>
@@ -100,6 +90,15 @@ export const ROICalculator: React.FC = () => {
                     <div className="text-4xl font-bold text-emerald-400 flex items-baseline justify-center gap-1 drop-shadow-md">
                         {formatCurrency(opoundCost)}<span className="text-lg text-slate-500 font-normal">/mo</span>
                     </div>
+                </div>
+
+                <div className="pt-4">
+                    <button
+                        onClick={() => { window.scrollTo(0, 0); navigate('/pricing'); }}
+                        className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-blue-500/20 transition-all uppercase tracking-widest text-sm cursor-pointer"
+                    >
+                        View Pricing
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,14 @@
+import React from 'react';
+import { MiniROIWidget } from '../components/MiniROIWidget';
+import { PricingTable } from '../components/PricingTable';
+import { YourAITerms } from '../components/YourAITerms';
+
+export const Pricing: React.FC = () => {
+    return (
+        <>
+            <MiniROIWidget />
+            <PricingTable />
+            <YourAITerms />
+        </>
+    );
+};
