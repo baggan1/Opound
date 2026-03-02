@@ -9,9 +9,17 @@ export interface ServiceCardProps {
 export interface PricingPlan {
   name: string;
   price: string;
-  description: string;
+  badge?: string;
+  timeline?: string;
+  minimumCommitment?: string;
+  headline: string;
   features: string[];
+  notIncluded?: string[];
+  whatHappensNext?: string;
+  after6Months?: string;
+  whoThisIsFor?: string;
   cta: string;
+  ctaNote?: string;
   highlighted?: boolean;
 }
 

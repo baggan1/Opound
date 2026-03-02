@@ -22,11 +22,16 @@ export const MiniROIWidget: React.FC = () => {
                     <span className="text-sm font-medium text-slate-300">Your Estimated Monthly Loss to Manual Tasks:</span>
                 </div>
 
-                <div className="flex items-baseline gap-2">
-                    <span className="text-2xl md:text-3xl font-black text-red-400 drop-shadow-md tracking-tighter">
-                        {formatCurrency(losingAmount)}
-                    </span>
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">/mo</span>
+                <div className="flex flex-col sm:flex-row items-end sm:items-center gap-1 sm:gap-4">
+                    <div className="flex items-baseline gap-2">
+                        <span className="text-2xl md:text-3xl font-black text-red-400 drop-shadow-md tracking-tighter">
+                            {formatCurrency(losingAmount)}
+                        </span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">/mo</span>
+                    </div>
+                    <a href="/#roi-calculator" className="text-[10px] text-slate-500 hover:text-slate-300 underline underline-offset-4 transition-colors uppercase tracking-widest font-medium">
+                        ← Adjust your numbers
+                    </a>
                 </div>
             </div>
             {/* Subtle progress bar indicating calculation lock */}

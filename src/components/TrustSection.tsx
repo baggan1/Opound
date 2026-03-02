@@ -12,9 +12,9 @@ export const TrustSection: React.FC = () => (
                     <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20">
                         <Award className="text-emerald-500" size={28} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">15+ Years Experience</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">15+ Years Building Systems That Work</h3>
                     <p className="text-slate-400 leading-relaxed font-light">
-                        Deep roots in FinTech and AI architecture. Proven track record of building secure, scalable systems that handle sensitive data with zero compromise.
+                        Not consulting on AI — actually building it. My background in FinTech and financial infrastructure means every system I deploy is built for security, reliability, and real-world production — not just a proof of concept.
                     </p>
                 </div>
 
@@ -22,9 +22,9 @@ export const TrustSection: React.FC = () => (
                     <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/20">
                         <ShieldCheck className="text-blue-500" size={28} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Leadership & Discipline</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">Discipline Is the Differentiator</h3>
                     <p className="text-slate-400 leading-relaxed font-light">
-                        Grounded in the principles of Tang Soo Do (2nd Degree Black Belt). We approach technology with the same focus, discipline, and commitment to mastery.
+                        As a Tang Soo Do 2nd Degree Black Belt, I know that mastery comes from repetition, precision, and showing up consistently — not just talent. That same discipline is how I approach every client engagement. You get someone who finishes what they start.
                     </p>
                 </div>
             </div>

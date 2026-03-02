@@ -74,11 +74,11 @@ export const Navbar: React.FC = () => {
                         )
                     ))}
                     <Link
-                        to="/pricing"
-                        onClick={() => handleNavClick('/pricing')}
+                        to="/"
+                        onClick={() => { handleNavClick('/'); setTimeout(() => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
                         className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20"
                     >
-                        Get Started <ArrowRight className="w-4 h-4" />
+                        Book Your Free Audit <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -113,11 +113,11 @@ export const Navbar: React.FC = () => {
                         )
                     ))}
                     <Link
-                        to="/pricing"
-                        onClick={() => handleNavClick('/pricing')}
+                        to="/"
+                        onClick={() => { setIsOpen(false); setTimeout(() => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
                         className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold"
                     >
-                        Get Started
+                        Book Your Free Audit
                     </Link>
                 </div>
             </div>

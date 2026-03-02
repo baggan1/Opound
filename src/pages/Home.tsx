@@ -1,5 +1,6 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
+import { VerticalsSection } from '../components/VerticalsSection';
 import { ProvenTech } from '../components/ProvenTech';
 import { EfficiencyLab } from '../components/EfficiencyLab';
 import { ServicesGrid } from '../components/ServicesGrid';
@@ -10,6 +11,7 @@ export const Home: React.FC = () => {
     return (
         <>
             <Hero />
+            <VerticalsSection />
             <ProvenTech />
 
             <section id="calculator" className="py-24 bg-slate-900 border-t border-slate-800">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Workflow, Bot, ShieldCheck, Search, BarChart3, AlertCircle } from 'lucide-react';
+import { Phone, CalendarCheck, ClipboardList, ShieldQuestion, DatabaseZap, Map } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 import { ServiceCardProps } from '../types';
 
@@ -16,34 +16,34 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) =
 export const ServicesGrid: React.FC = () => {
     const services: ServiceCardProps[] = [
         {
-            title: "Business Automation",
-            description: "Eliminate manual data entry. We design Gmail, Slack, and CRM workflows that triage tasks and route data automatically.",
-            icon: <Workflow size={28} />
+            title: "After-Hours AI Receptionist",
+            description: "Never miss a call after closing time. Our AI answers patient questions, books appointments, and captures leads 24/7 — even on weekends.",
+            icon: <Phone size={28} />
         },
         {
-            title: "Custom RAG Chatbots",
-            description: "Deploy internal knowledge bases that know your company inside out. 24/7 support via SMS, WhatsApp, and Webhooks.",
-            icon: <Bot size={28} />
+            title: "Appointment Booking Automation",
+            description: "AI handles scheduling end-to-end: checks availability, collects patient details, and delivers a booking link — without your front desk lifting a finger.",
+            icon: <CalendarCheck size={28} />
         },
         {
-            title: "Financial Intelligence",
-            description: "AI-driven cash flow forecasting, fraud detection, and automated invoice processing tailored for FinTech operations.",
-            icon: <ShieldCheck size={28} />
+            title: "Patient Intake & Data Collection",
+            description: "Collect patient name, contact info, and reason for visit through natural conversation before they ever walk through your door.",
+            icon: <ClipboardList size={28} />
         },
         {
-            title: "AI Marketing & SEO",
-            description: "Automate lead responses and generate data-driven content strategies that capture high-intent traffic without the overhead.",
-            icon: <Search size={28} />
+            title: "Insurance FAQ Bot",
+            description: "Instantly answer common insurance questions — coverage types, in-network providers, co-pays — trained on your own documents.",
+            icon: <ShieldQuestion size={28} />
         },
         {
-            title: "Data Visualization",
-            description: "Turn raw spreadsheets into Looker Studio or Power BI dashboards. Real-time visualization of your key performance metrics.",
-            icon: <BarChart3 size={28} />
+            title: "CRM & Contact Sync",
+            description: "Every patient interaction automatically logged in HubSpot. New contacts created, returning patients updated, conversation notes attached.",
+            icon: <DatabaseZap size={28} />
         },
         {
-            title: "Readiness Assessment",
-            description: "The scaling entry point. We audit your tech stack and map out a 12-month AI roadmap for maximum operational ROI.",
-            icon: <AlertCircle size={28} />
+            title: "AI Readiness Audit",
+            description: "Not sure where to start? We map your practice's workflows, identify the highest-ROI automation opportunities, and deliver a 90-day implementation roadmap.",
+            icon: <Map size={28} />
         }
     ];
 
@@ -51,8 +51,8 @@ export const ServicesGrid: React.FC = () => {
         <section id="services" className="py-32">
             <div className="container mx-auto px-6">
                 <SectionHeading
-                    title="Enterprise Tech for Scaling Teams"
-                    subtitle="Stop fighting your software. We specialize in low-maintenance, high-impact AI solutions that work while you sleep."
+                    title="Everything Your Front Desk Handles. Automated."
+                    subtitle="Custom-built AI systems for dental practices — from after-hours calls to patient intake and insurance FAQs."
                 />
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((s, idx) => <ServiceCard key={idx} {...s} />)}
