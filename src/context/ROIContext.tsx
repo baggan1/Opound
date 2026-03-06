@@ -20,7 +20,7 @@ export const ROIProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [losingAmount, setLosingAmount] = useState(4200);
     const [opoundCost, setOpoundCost] = useState(2450);
 
-    const WEEKS_PER_MONTH = 4;
+    const WEEKS_PER_MONTH = 4.33;
 
     useEffect(() => {
         const totalHoursPerMonth = employees * hours * WEEKS_PER_MONTH;

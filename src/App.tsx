@@ -10,132 +10,6 @@ import { Pricing } from './pages/Pricing';
 import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 
-// Lead Magnet Popup Component
-const LeadMagnetPopup: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    // Only show on home page
-    if (location.pathname !== '/') return;
-
-    // Show popup after 3 seconds if not previously closed/submitted this session
-    const hasSeenPopup = sessionStorage.getItem('opound_popup_dismissed');
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => setIsVisible(true), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname]);
-
-  const closePopup = () => {
-    setIsVisible(false);
-    sessionStorage.setItem('opound_popup_dismissed', 'true');
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const payload = {
-      ...Object.fromEntries(formData.entries()),
-      _subject: "Lead Magnet Download - Efficiency Checklist",
-      _to: "hello@opound.com"
-    };
-
-    try {
-      await fetch('https://formspree.io/f/xykdaqly', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      setSubmitted(true);
-    } catch (err) {
-      setSubmitted(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 animate-in fade-in duration-500">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-        onClick={closePopup}
-      ></div>
-
-      {/* Content */}
-      <div className="relative bg-[#0a0f1e] w-full max-w-lg rounded-[2.5rem] shadow-2xl shadow-emerald-500/10 border border-slate-800/50 overflow-hidden p-10 md:p-14 transform animate-in zoom-in slide-in-from-bottom-8 duration-500">
-        <button
-          onClick={closePopup}
-          className="absolute top-8 right-8 text-slate-400 hover:text-white transition-colors p-2"
-        >
-          <X size={24} />
-        </button>
-
-        {submitted ? (
-          <div className="text-center py-12 flex flex-col items-center">
-            <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-emerald-500/10 border border-emerald-500/20">
-              <Check size={32} className="text-emerald-400" strokeWidth={3} />
-            </div>
-            <h3 className="text-2xl font-black text-white mb-2">You're All Set!</h3>
-            <p className="text-slate-400 mb-6">Click below to download your checklist.</p>
-            <a
-              href="/dental_ai_checklist.pdf"
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition-transform active:scale-95 uppercase tracking-widest text-xs"
-            >
-              Download PDF Checklist
-            </a>
-          </div>
-        ) : (
-          <>
-            <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
-              FREE RESOURCE
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-white leading-tight mb-4 tracking-tighter">
-              Is Your Front Desk Doing Work AI Could Handle?
-            </h2>
-            <p className="text-slate-400 text-sm leading-relaxed mb-8 font-medium">
-              Most dental practices are losing 8+ hours a week to scheduling calls, intake paperwork, and insurance questions. Our free checklist shows you exactly which tasks AI can take off your plate — and which ones still need a human.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4 mb-8">
-              <input
-                name="email"
-                required
-                type="email"
-                placeholder="Your work email"
-                className="w-full bg-slate-900/50 border border-slate-800 rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all placeholder:text-slate-500"
-              />
-              <button
-                disabled={loading}
-                type="submit"
-                className="w-full bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-700 text-slate-950 font-black py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all active:scale-95 uppercase tracking-widest text-xs flex items-center justify-center gap-3"
-              >
-                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                {loading ? 'Preparing Checklist...' : 'SEND ME THE FREE CHECKLIST'}
-              </button>
-            </form>
-
-            <div className="pt-6 border-t border-slate-800">
-              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] leading-relaxed">
-                Built for dental practices on the Eastside. <br />No spam — one email with your checklist, that's it.
-              </p>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -214,7 +88,7 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
           <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-white text-lg">
             O
           </div>
-          <span className="text-xl font-bold text-white tracking-tighter">Opound AI Consulting</span>
+          <span className="text-xl font-bold text-white tracking-tighter">Opound LLC</span>
         </div>
         <div className="flex flex-wrap justify-center gap-10 text-slate-500 text-sm font-bold uppercase tracking-widest">
           <a href="/#services" className="hover:text-white transition-colors">Services</a>
@@ -226,7 +100,6 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t border-slate-800/30 text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">
         <div>© {new Date().getFullYear()} OPOUND LLC. ALL RIGHTS RESERVED.</div>
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          <button onClick={onOpenLegal} className="hover:text-emerald-500 transition-colors uppercase cursor-pointer tracking-[0.3em]">Legal Transparency</button>
           <a href="/privacy" className="hover:text-emerald-500 transition-colors">Privacy Policy</a>
           <a href="/terms" className="hover:text-emerald-500 transition-colors">Terms of Service</a>
         </div>
@@ -236,8 +109,6 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
 );
 
 export default function App() {
-  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
-
   return (
     <ROIProvider>
       <Router>
@@ -254,9 +125,7 @@ export default function App() {
             </Routes>
           </main>
 
-          <Footer onOpenLegal={() => setIsLegalModalOpen(true)} />
-          <LeadMagnetPopup />
-          <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} />
+          <Footer onOpenLegal={() => { }} />
         </div>
       </Router>
     </ROIProvider>

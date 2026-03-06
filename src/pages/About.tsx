@@ -7,85 +7,103 @@ export const About: React.FC = () => {
         <div className="bg-slate-950 min-h-screen">
             <div className="pt-32 pb-16 text-center">
                 <h1 className="text-5xl font-black text-white mb-4 tracking-tighter">About Us</h1>
-                <p className="text-slate-400 max-w-2xl mx-auto">The people and principles behind Opound AI Consulting.</p>
+                <p className="text-slate-400 max-w-2xl mx-auto">The expertise and principles behind Opound LLC.</p>
             </div>
+
             {/* Block 1: Opening Statement */}
             <div className="max-w-3xl mx-auto px-6 pb-24 text-center">
-                <h2 className="text-xl font-bold text-emerald-400 mb-6 tracking-wide uppercase">Why Opound Exists</h2>
+                <h2 className="text-xl font-bold text-emerald-400 mb-6 tracking-wide uppercase">
+                    Why Opound Exists
+                </h2>
                 <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
                     <p>
-                        Most small businesses are running on the same manual workflows they used five years ago — not because automation isn't available, but because the tools built for enterprise are out of reach, and the generic chatbot builders don't actually solve operational problems.
+                        FinTech firms, digital asset companies, and regulated financial businesses
+                        are under pressure to adopt AI — but most don't have a senior AI product
+                        leader on staff who understands the compliance layer, the integration
+                        complexity, and how to actually ship.
                     </p>
                     <p>
-                        Opound exists to close that gap. We take the same AI systems that financial institutions use to automate high-stakes workflows and build them specifically for dental practices, service businesses, and professional firms — at a price point that makes sense for an SMB.
+                        Opound fills that gap. Senior product and technical program leadership,
+                        embedded into your team on a fractional basis — so you get the expertise
+                        of a seasoned FinTech AI lead without a 6-month hiring process or a
+                        full-time salary.
                     </p>
                 </div>
             </div>
 
-            {/* Block 2: What We've Built (Proof Tiles) */}
+            {/* Block 2: The Expertise Behind Opound (Domain Pillars) */}
             <div className="max-w-6xl mx-auto px-6 pb-32">
-                <h2 className="text-3xl font-bold text-white mb-10">What We've Built</h2>
+                <div className="text-center mb-10">
+                    <h2 className="text-3xl font-bold text-white mb-2">The Expertise Behind Opound</h2>
+                    <p className="text-slate-400 text-lg">Three domains that are rare to find in one practitioner.</p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Tile 1 */}
+                    {/* Pillar 1 */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
-                            LIVE PRODUCTION SYSTEM
+                            INSTITUTIONAL COMPLIANCE
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Dental AI Agent</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
-                            AI receptionist for dental practices. Handles appointment booking, patient intake, insurance FAQs, and HubSpot CRM sync. Built end-to-end by Opound.
+                        <h3 className="text-xl font-bold text-white mb-3">Digital Asset Compliance & AML Surveillance</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed flex-grow">
+                            Direct experience with Solidus Labs — serving 25+ institutional clients on AML surveillance, market manipulation detection, and compliance infrastructure for digital asset markets. Production compliance tooling used by real institutions, not whitepapers.
                         </p>
-                        <a href="https://demo.opound.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
-                            Try the Demo <span className="ml-1 tracking-tighter">→</span>
-                        </a>
                     </div>
 
-                    {/* Tile 2 */}
+                    {/* Pillar 2 */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
-                            LIVE RAG PLATFORM
+                            ENTERPRISE FINTECH
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">NatureNani</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
-                            AI-powered wellness platform built on custom RAG pipelines. Answers health questions from curated Ayurvedic and clinical sources. 1,000+ active users.
+                        <h3 className="text-xl font-bold text-white mb-3">Mission-Critical Trading Infrastructure</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed flex-grow">
+                            Built and maintained systems at Wellington Management — one of the world's largest independent investment firms, $1T+ AUM — where latency, reliability, and auditability are non-negotiable. That standard of engineering rigor carries into every Opound engagement.
                         </p>
-                        <a href="https://www.naturenani.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
-                            View Live <span className="ml-1 tracking-tighter">→</span>
-                        </a>
                     </div>
 
-                    {/* Tile 3 */}
+                    {/* Pillar 3 */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
-                            PROPRIETARY METHODOLOGY
+                            LIVE PRODUCTION SYSTEMS
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">AI Readiness Audit Framework</h3>
+                        <h3 className="text-xl font-bold text-white mb-3">Production AI, Not Slide Decks</h3>
                         <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
-                            A 10-page diagnostic framework developed across multiple SMB engagements. Maps workflows, identifies automation opportunities, and delivers a sequenced 90-day roadmap.
+                            Opound's AI systems are in production. A RAG platform serving 1,000+ active users (NatureNani) and an end-to-end dental practice automation system (booking, intake, CRM, admin dashboard) — both built and operated by Opound. The difference between a strategist and a builder matters when you need something to ship.
                         </p>
-                        <a href="/pricing" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
-                            See What's Included <span className="ml-1 tracking-tighter">→</span>
+                        <a href="/#case-studies" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
+                            View case studies <span className="ml-1 tracking-tighter">→</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            {/* Block 3: Personal Paragraph */}
+            {/* Block 3: How We Work */}
             <div className="max-w-3xl mx-auto px-6 pb-24">
                 <div className="border-l-4 border-emerald-500 pl-8 space-y-4">
-                    <h2 className="text-2xl font-bold text-white mb-6">Why I Left FinTech to Build This</h2>
+                    <h2 className="text-2xl font-bold text-white mb-6">
+                        Senior Expertise, Fractional Commitment
+                    </h2>
                     <div className="space-y-4 text-slate-300 text-lg leading-relaxed font-light">
                         <p>
-                            After 15 years building systems for financial institutions — environments where a bad automation costs millions — I kept noticing the same thing: the small businesses I'd grown up around were drowning in work that software could handle in seconds.
+                            Most FinTech firms at the Series A–C stage don't need a full-time
+                            AI product lead yet — but they do need someone who can own the
+                            roadmap, manage vendors, lead cross-functional delivery, and be
+                            accountable when something ships wrong.
                         </p>
                         <p>
-                            A dental practice losing a patient because no one answered at 6pm. An HVAC company missing a $3,000 job because the after-hours voicemail was full. A law firm spending Friday afternoons on intake paperwork that an AI could process in minutes.
+                            That's the gap Opound fills. Not a consulting firm that delivers
+                            a report and leaves. Not a vendor that needs managing. A senior
+                            practitioner embedded in your team, with direct experience in the
+                            compliance, infrastructure, and AI domains your business operates in.
                         </p>
                         <p>
-                            The technology existed. The expertise existed. What was missing was someone willing to build it at the scale these businesses actually needed — not a $50,000 enterprise contract, not a generic SaaS subscription, but a real system built for their specific workflows and operated by someone who cares if it works.
+                            Engagements are scoped to what you actually need — a bounded
+                            audit, a delivery sprint, or an ongoing fractional retainer.
+                            Every engagement starts with a direct conversation about scope,
+                            not a sales deck.
                         </p>
                         <p className="font-bold text-white pt-2">
-                            That's what Opound is.
+                            If it needs to be defensible in front of a compliance team or
+                            a board — that's the work we do.
                         </p>
                     </div>
                 </div>
@@ -93,9 +111,20 @@ export const About: React.FC = () => {
 
             <FounderBio />
             <TrustSection />
+
+            {/* Block 5: Calendly CTA */}
             <div className="pb-20 pt-10 text-center px-6">
-                <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
-                    Based in Mountlake Terrace, WA — centrally located to serve dental practices and businesses across Bellevue, Redmond, Kirkland, Bothell, and the greater Seattle area
+                <a
+                    href="https://calendar.zoho.com/zc/ui/embed/#calendar=zz080112301ff36847f46335da8e80ee4d12f8ac9425067f3e6f0f6486dbd39b4d0120142e50352b2ea7aca43d973c325351ab0dae&title=navilla&type=1&language=en&timezone=America%2FLos_Angeles&showTitle=1&showTimezone=1&view=day&showDetail=0&theme=1&eventColorType=light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-8 py-4 rounded-xl text-lg transition-colors"
+                    title="Book a Strategy Call"
+                >
+                    Book a Strategy Call
+                </a>
+                <p className="text-slate-500 mt-4 text-sm max-w-2xl mx-auto">
+                    30 minutes. Scoped to your situation.
                 </p>
             </div>
         </div>

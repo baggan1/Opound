@@ -1,228 +1,101 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Database, Layers } from 'lucide-react';
+import { SectionHeading } from './SectionHeading';
 
 export const ProvenTech: React.FC = () => (
-    <section id="proven-tech" className="py-24 relative">
-        <div className="container mx-auto px-6">
-            {/* Top header text */}
-            <div className="text-center mb-16">
-                <div className="inline-flex items-center gap-3 mb-4">
-                    <div className="h-px w-8 bg-emerald-500"></div>
-                    <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-500">Proof of Work</h3>
-                    <div className="h-px w-8 bg-emerald-500"></div>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-                    Built for Production. Not just for Demo.
-                </h2>
-                <p className="text-xl text-slate-400 mt-6 max-w-2xl mx-auto leading-relaxed font-light">
-                    Every system we deliver is live, tested, and handling real users. Here's the proof.
-                </p>
-            </div>
+    <section id="case-studies" className="py-24 bg-slate-900 border-t border-slate-800">
+        <div className="container mx-auto px-6 max-w-6xl">
+            <SectionHeading
+                title="Work We've Shipped"
+                subtitle="Not demos. Not prototypes. Production systems."
+            />
 
-            {/* Two-tile grid */}
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="flex flex-col gap-12 mt-16">
 
-                {/* Tile 1 — Dental AI Agent (Primary / Most Prominent) */}
-                <div className="relative group">
-                    <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/30 transition-colors pointer-events-none"></div>
-                    <a
-                        href="https://demo.opound.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block relative bg-slate-900 border border-blue-500/40 rounded-3xl p-6 overflow-hidden shadow-2xl shadow-blue-500/10 transition-all hover:-translate-y-2 duration-500 hover:border-blue-400/60 hover:shadow-blue-500/20"
-                    >
-                        {/* Badge */}
-                        <div className="flex items-center justify-between mb-5">
-                            <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                                Live Demo
-                            </span>
-                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Primary Sales Asset</span>
+                {/* Case Study 1: NatureNani */}
+                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-emerald-500/30 transition-colors shadow-2xl relative overflow-hidden">
+                    {/* Subtle bg glow */}
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-500/5 blur-[100px] pointer-events-none rounded-full"></div>
+
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                        <div className="w-full md:w-1/3">
+                            <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+                                LIVE SAAS PLATFORM
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">NatureNani</h3>
+                            <a href="https://www.naturenani.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm font-bold inline-flex items-center gap-1 transition-colors">
+                                View live <ExternalLink size={14} />
+                            </a>
                         </div>
 
-                        {/* Visual - Chat UI Preview */}
-                        <div className="rounded-2xl w-full h-[260px] overflow-hidden bg-[#0f172a] relative border border-emerald-500/30 mb-5 shadow-[0_0_15px_rgba(16,185,129,0.1)] flex flex-col group-hover:border-emerald-500/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-700">
-
-                            {/* Browser/Chat Header */}
-                            <div className="h-10 bg-slate-900 border-b border-slate-800 flex items-center px-4 justify-between flex-shrink-0 z-10">
-                                <div className="flex items-center gap-2">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                    </div>
-                                </div>
-                                <div className="text-[10px] font-medium text-slate-400 font-mono tracking-wide flex items-center gap-2">
-                                    Dental AI Assistant
-                                    <span className="text-slate-600">·</span>
-                                    demo.opound.com
-                                </div>
-                                <div className="flex items-center gap-1.5">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                    <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">Live</span>
-                                </div>
-                            </div>
-
-                            {/* Chat Area */}
-                            <div className="flex-1 p-4 flex flex-col gap-3 relative overflow-hidden text-xs">
-                                {/* Bot Message */}
-                                <div className="flex gap-2 mr-6">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex-shrink-0 flex items-center justify-center shadow-md">
-                                        <span className="text-[10px]">🦷</span>
-                                    </div>
-                                    <div className="bg-slate-800/80 text-slate-200 p-2.5 rounded-2xl rounded-tl-sm border border-slate-700/50 shadow-sm leading-relaxed">
-                                        Hi! I'm the Dental AI Assistant for Bright Smile Dental. How can I help you today?
-                                    </div>
-                                </div>
-
-                                {/* Quick Replies */}
-                                <div className="flex flex-wrap gap-1.5 ml-8 mr-4 mt-0.5">
-                                    <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full text-[9px] font-medium whitespace-nowrap">Book Appointment</div>
-                                    <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full text-[9px] font-medium whitespace-nowrap">Insurance Questions</div>
-                                    <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full text-[9px] font-medium whitespace-nowrap">Office Hours</div>
-                                </div>
-
-                                {/* Patient Message */}
-                                <div className="flex gap-2 ml-10 mt-1 self-end">
-                                    <div className="bg-blue-600/90 text-white p-2.5 rounded-2xl rounded-tr-sm shadow-sm leading-relaxed border border-blue-500/50">
-                                        I'd like to book a cleaning
-                                    </div>
-                                </div>
-
-                                {/* Bot Response */}
-                                <div className="flex gap-2 mr-6 mt-1">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex-shrink-0 flex items-center justify-center shadow-md">
-                                        <span className="text-[10px]">🦷</span>
-                                    </div>
-                                    <div className="bg-slate-800/80 text-slate-200 p-2.5 rounded-2xl rounded-tl-sm border border-slate-700/50 shadow-sm leading-relaxed">
-                                        Great! I can help with that. May I get your name to get started?
-                                    </div>
-                                </div>
-
-                                {/* Fade Overlay */}
-                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center justify-between">
+                        <div className="w-full md:w-2/3 space-y-8">
                             <div>
-                                <span className="text-white font-bold text-xl flex items-center gap-2 group-hover:text-blue-400 transition-colors">
-                                    Dental AI Agent — Live Demo
-                                    <ExternalLink size={14} className="text-blue-400" />
-                                </span>
-                                <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-                                    A fully deployed AI receptionist for dental practices. Handles appointment booking via Calendly, patient intake, insurance FAQs via RAG, and CRM sync via HubSpot. Built and operated by Opound.
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Problem</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    Building a production SaaS with a conversational AI layer that could serve 1,000+ concurrent users with reliable, low-latency responses — without enterprise infrastructure budget.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Approach</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    RAG architecture using pgvector (Supabase), Gemini AI, and a Stripe-monetized SaaS shell. Retrieval precision and response latency as primary engineering constraints.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-emerald-500 font-bold mb-2">Result</h4>
+                                <p className="text-white leading-relaxed font-medium">
+                                    Sub-250ms average query latency. Live SaaS with 1,000+ active users and Stripe billing in production. Full-stack ownership from architecture through deployment.
                                 </p>
                             </div>
                         </div>
-
-                        <div className="mt-6 pt-4 border-t border-slate-800/50">
-                            <span className="text-blue-400 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                                Try the Live Demo <ExternalLink size={13} />
-                            </span>
-                        </div>
-                    </a>
+                    </div>
                 </div>
 
-                {/* Tile 2 — NatureNani */}
-                <div className="relative group">
-                    <div className="absolute inset-0 bg-emerald-500/10 blur-3xl rounded-full group-hover:bg-emerald-500/20 transition-colors pointer-events-none"></div>
-                    <a
-                        href="https://www.naturenani.com/about"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block relative bg-white border border-slate-200 rounded-3xl p-4 overflow-hidden shadow-2xl transition-all hover:-translate-y-2 duration-500 hover:shadow-emerald-500/10"
-                    >
-                        {/* Visual - RAG Card Preview (Matching Dental AI style shell) */}
-                        <div className="rounded-2xl w-full h-[260px] overflow-hidden bg-[#0f172a] relative border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)] flex flex-col group-hover:border-emerald-500/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-700">
+                {/* Case Study 2: Dental Practice AI Platform */}
+                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-blue-500/30 transition-colors shadow-2xl relative overflow-hidden">
+                    {/* Subtle bg glow */}
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-500/5 blur-[100px] pointer-events-none rounded-full"></div>
 
-                            {/* Browser/Chat Header */}
-                            <div className="h-10 bg-slate-900 border-b border-slate-800 flex items-center px-4 justify-between flex-shrink-0 z-10">
-                                <div className="flex items-center gap-2">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                                    </div>
-                                </div>
-                                <div className="text-[10px] font-medium text-slate-400 font-mono tracking-wide flex items-center gap-2">
-                                    NatureNani
-                                    <span className="text-slate-600">·</span>
-                                    naturenani.com
-                                </div>
-                                <div className="flex items-center gap-1.5">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                    <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">Live</span>
-                                </div>
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                        <div className="w-full md:w-1/3">
+                            <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+                                OPERATIONAL AUTOMATION
                             </div>
+                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Dental Practice AI Platform</h3>
+                            <a href="https://demo.opound.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 text-sm font-bold inline-flex items-center gap-1 transition-colors">
+                                Try the demo <ExternalLink size={14} />
+                            </a>
+                        </div>
 
-                            {/* RAG Area */}
-                            <div className="flex-1 p-4 flex flex-col gap-4 relative overflow-hidden text-xs">
-
-                                {/* Patient Message */}
-                                <div className="flex gap-2 ml-10 mt-1 self-end">
-                                    <div className="bg-blue-600/90 text-white p-2.5 rounded-2xl rounded-tr-sm shadow-sm leading-relaxed border border-blue-500/50">
-                                        What helps with chronic fatigue?
-                                    </div>
-                                </div>
-
-                                {/* RAG Knowledge Card */}
-                                <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl overflow-hidden mt-1 shadow-md">
-                                    {/* Card Header */}
-                                    <div className="bg-slate-800 border-b border-slate-700/50 px-3 py-2 flex items-center gap-2">
-                                        <span className="text-[10px]">📄</span>
-                                        <span className="text-[10px] font-medium text-teal-500 uppercase tracking-widest">AI Response · 3 sources referenced</span>
-                                    </div>
-
-                                    {/* Card Body */}
-                                    <div className="p-3 text-slate-300 leading-relaxed font-light">
-                                        Ashwagandha and B-complex vitamins show strong evidence for adrenal fatigue support based on Ayurvedic and clinical research.
-                                    </div>
-
-                                    {/* Source Tags */}
-                                    <div className="px-3 pb-3 flex flex-wrap gap-2">
-                                        <span className="inline-flex items-center gap-1 bg-teal-500/10 border border-teal-500/20 text-teal-400 px-2 py-0.5 rounded text-[9px] font-medium">
-                                            Ayurveda Guide
-                                        </span>
-                                        <span className="inline-flex items-center gap-1 bg-teal-500/10 border border-teal-500/20 text-teal-400 px-2 py-0.5 rounded text-[9px] font-medium">
-                                            Clinical Research PDF
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Fade Overlay */}
-                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
+                        <div className="w-full md:w-2/3 space-y-8">
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Problem</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    A dental practice's front desk bottlenecked by appointment booking, patient intake, and insurance questions — tasks consuming staff time that didn't require a human.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Approach</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    Multi-component AI platform: RAG chatbot for insurance/procedure FAQs, Calendly-integrated booking flow with patient data collection, HubSpot CRM sync, and an admin dashboard with document management and analytics.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-blue-400 font-bold mb-2">Result</h4>
+                                <p className="text-white leading-relaxed font-medium">
+                                    End-to-end system handling booking, intake, and FAQ autonomously. Admin dashboard gives practice owner full visibility into every conversation and booking event. Demonstrates AI deployment in a compliance-adjacent, regulated-adjacent vertical.
+                                </p>
                             </div>
                         </div>
-                        <div className="mt-6 p-4">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-slate-900 font-bold text-lg flex items-center gap-2 group-hover:text-emerald-600 transition-colors">
-                                    NatureNani Case Study
-                                    <ExternalLink size={14} className="text-emerald-500" />
-                                </span>
-                                <span className="px-2 py-1 bg-emerald-500/10 text-emerald-600 text-[10px] font-bold uppercase rounded">LIVE RAG PLATFORM</span>
-                            </div>
-                            <p className="text-slate-500 text-sm leading-relaxed">Translating ancient wisdom from Ayurveda and Naturopathy for modern life via secure, private AI architecture. 1k+ active users.</p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
 
             </div>
 
-            {/* Supporting stats */}
-            <div className="flex flex-wrap justify-center gap-12 mt-20 text-center">
-                <div>
-                    <p className="text-3xl font-bold text-white mb-1">15+</p>
-                    <p className="text-sm text-slate-500 uppercase tracking-wider">Years Experience</p>
-                </div>
-                <div>
-                    <p className="text-3xl font-bold text-white mb-1">1k+</p>
-                    <p className="text-sm text-slate-500 uppercase tracking-wider">Active AI Users</p>
-                </div>
-                <div>
-                    <p className="text-3xl font-bold text-white mb-1">24/7</p>
-                    <p className="text-sm text-slate-500 uppercase tracking-wider">Always-On AI</p>
-                </div>
+            <div className="text-center mt-12">
+                <p className="text-slate-500 font-medium tracking-wide italic text-lg">
+                    "These aren't demos. They're running."
+                </p>
             </div>
         </div>
     </section>

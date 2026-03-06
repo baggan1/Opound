@@ -24,7 +24,11 @@ export interface PricingPlan {
 }
 
 export interface AnalysisResult {
+  coreProblem: string;
   efficiencyGain: string;
+  complianceRisk: string;
   recommendedSolution: string;
+  techStack: string[];
   implementationTime: string;
+  firstStep: string;
 }

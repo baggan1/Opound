@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { CalendarModal } from './CalendarModal';
 
 export const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -16,9 +18,11 @@ export const Navbar: React.FC = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Solutions', path: '/#services' },
+        { name: 'Services', path: '/#services' },
+        { name: 'Who We Work With', path: '/#who-we-work-with' },
+        { name: 'Work', path: '/#case-studies' },
         { name: 'Pricing', path: '/pricing' },
-        { name: 'About Us', path: '/about' },
+        { name: 'About', path: '/about' },
     ];
 
     const handleNavClick = (path: string) => {
@@ -42,85 +46,88 @@ export const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-6'}`}>
-            <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link to="/" onClick={() => handleNavClick('/')} className="flex items-center gap-2 group cursor-pointer">
-                    <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-white text-2xl group-hover:rotate-12 transition-transform">
-                        O
+        <>
+            <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-6'}`}>
+                <div className="container mx-auto px-6 flex items-center justify-between">
+                    <Link to="/" onClick={() => handleNavClick('/')} className="flex items-center gap-2 group cursor-pointer">
+                        <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-white text-2xl group-hover:rotate-12 transition-transform">
+                            O
+                        </div>
+                        <span className="text-xl font-bold tracking-tight text-white">Opound LLC</span>
+                    </Link>
+
+                    {/* Desktop Nav */}
+                    <div className="hidden lg:flex items-center gap-6 text-slate-400 font-medium">
+                        {navLinks.map(link => (
+                            link.path.startsWith('/#') ? (
+                                <button
+                                    key={link.name}
+                                    onClick={() => handleNavClick(link.path)}
+                                    className="hover:text-emerald-500 transition-colors text-sm whitespace-nowrap"
+                                >
+                                    {link.name}
+                                </button>
+                            ) : (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    onClick={() => handleNavClick(link.path)}
+                                    className={`hover:text-emerald-500 transition-colors text-sm whitespace-nowrap ${location.pathname === link.path && !location.hash ? 'text-emerald-400 font-semibold' : ''}`}
+                                >
+                                    {link.name}
+                                </Link>
+                            )
+                        ))}
+                        <button
+                            onClick={() => setIsCalendarOpen(true)}
+                            className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20 whitespace-nowrap ml-2"
+                        >
+                            Book a Strategy Call <ArrowRight className="w-4 h-4" />
+                        </button>
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white">Opound AI Consulting</span>
-                </Link>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8 text-slate-400 font-medium">
-                    {navLinks.map(link => (
-                        link.path.startsWith('/#') ? (
-                            <button
-                                key={link.name}
-                                onClick={() => handleNavClick(link.path)}
-                                className="hover:text-emerald-500 transition-colors text-sm"
-                            >
-                                {link.name}
-                            </button>
-                        ) : (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                onClick={() => handleNavClick(link.path)}
-                                className={`hover:text-emerald-500 transition-colors text-sm ${location.pathname === link.path && !location.hash ? 'text-emerald-400 font-semibold' : ''}`}
-                            >
-                                {link.name}
-                            </Link>
-                        )
-                    ))}
-                    <Link
-                        to="/"
-                        onClick={() => { handleNavClick('/'); setTimeout(() => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
-                        className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20"
-                    >
-                        Book Your Free Audit <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    {/* Mobile Toggle */}
+                    <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white p-2">
+                        {isOpen ? <X /> : <Menu />}
+                    </button>
                 </div>
 
-                {/* Mobile Toggle */}
-                <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-2">
-                    {isOpen ? <X /> : <Menu />}
-                </button>
-            </div>
-
-            {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-slate-900 z-40 md:hidden transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                <div className="flex flex-col items-center justify-center h-full gap-8">
-                    <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white"><X size={32} /></button>
-                    {navLinks.map(link => (
-                        link.path.startsWith('/#') ? (
-                            <button
-                                key={link.name}
-                                onClick={() => handleNavClick(link.path)}
-                                className="text-2xl font-bold text-white hover:text-emerald-500"
-                            >
-                                {link.name}
-                            </button>
-                        ) : (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                onClick={() => handleNavClick(link.path)}
-                                className={`text-2xl font-bold transition-colors ${location.pathname === link.path ? 'text-emerald-400' : 'text-white hover:text-emerald-500'}`}
-                            >
-                                {link.name}
-                            </Link>
-                        )
-                    ))}
-                    <Link
-                        to="/"
-                        onClick={() => { setIsOpen(false); setTimeout(() => { const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
-                        className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold"
-                    >
-                        Book Your Free Audit
-                    </Link>
+                {/* Mobile Menu Overlay */}
+                <div className={`fixed inset-0 bg-slate-900 z-40 lg:hidden transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className="flex flex-col items-center justify-center h-full gap-8">
+                        <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white"><X size={32} /></button>
+                        {navLinks.map(link => (
+                            link.path.startsWith('/#') ? (
+                                <button
+                                    key={link.name}
+                                    onClick={() => handleNavClick(link.path)}
+                                    className="text-2xl font-bold text-white hover:text-emerald-500"
+                                >
+                                    {link.name}
+                                </button>
+                            ) : (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    onClick={() => handleNavClick(link.path)}
+                                    className={`text-2xl font-bold transition-colors ${location.pathname === link.path ? 'text-emerald-400' : 'text-white hover:text-emerald-500'}`}
+                                >
+                                    {link.name}
+                                </Link>
+                            )
+                        ))}
+                        <button
+                            onClick={() => { setIsOpen(false); setIsCalendarOpen(true); }}
+                            className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-lg shadow-emerald-500/20 mt-4"
+                        >
+                            Book a Strategy Call
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+
+            {/* Zoho Calendar Modal Overlay */}
+            <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
+        </>
     );
 };

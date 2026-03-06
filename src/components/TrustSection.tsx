@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Zap } from 'lucide-react';
+import { ShieldCheck, Award } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
 export const TrustSection: React.FC = () => (
@@ -12,9 +12,9 @@ export const TrustSection: React.FC = () => (
                     <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20">
                         <Award className="text-emerald-500" size={28} />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">15+ Years Building Systems That Work</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">15+ Years Across the Full Regulated Financial Stack</h3>
                     <p className="text-slate-400 leading-relaxed font-light">
-                        Not consulting on AI — actually building it. My background in FinTech and financial infrastructure means every system I deploy is built for security, reliability, and real-world production — not just a proof of concept.
+                        Fidelity Investments, ITG, Fannie Mae, Wellington Management (9 years, $1T+ AUM), Solidus Labs (digital asset AML, 25+ institutional clients). Retail brokerage, institutional equities execution, federal mortgage infrastructure, long-only asset management, digital asset compliance — the full range of regulated financial services. That depth is what Opound brings to every engagement.
                     </p>
                 </div>
 
@@ -24,7 +24,7 @@ export const TrustSection: React.FC = () => (
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-4">Discipline Is the Differentiator</h3>
                     <p className="text-slate-400 leading-relaxed font-light">
-                        As a Tang Soo Do 2nd Degree Black Belt, I know that mastery comes from repetition, precision, and showing up consistently — not just talent. That same discipline is how I approach every client engagement. You get someone who finishes what they start.
+                        As a Tang Soo Do 2nd Degree Black Belt, I know that mastery comes from precision and showing up consistently — not just talent. A FinTech compliance team will ask hard questions about your AI system. You want someone who has already thought through the answers.
                     </p>
                 </div>
             </div>

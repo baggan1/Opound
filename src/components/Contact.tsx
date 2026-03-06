@@ -35,8 +35,12 @@ export const Contact: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="max-w-6xl mx-auto bg-slate-800/20 rounded-[3rem] overflow-hidden border border-slate-700/50 flex flex-col lg:flex-row backdrop-blur-md">
                     <div className="flex-1 p-10 md:p-20 bg-slate-900/40 border-r border-slate-700/50">
-                        <h2 className="text-4xl font-bold text-white mb-6 tracking-tighter">Ready to reclaim <br /><span className="text-emerald-500">10 hours a week?</span></h2>
-                        <p className="text-slate-400 mb-12 text-lg font-light leading-relaxed">Join 50+ businesses that have optimized their operations with Opound.</p>
+                        <h2 className="text-4xl font-bold text-white mb-6 tracking-tighter">
+                            Ready to bring senior AI expertise <br /><span className="text-emerald-500">into your team?</span>
+                        </h2>
+                        <p className="text-slate-400 mb-12 text-lg font-light leading-relaxed">
+                            FinTech firms, RIAs, and regulated businesses work with Opound to move from AI exploration to production systems — without the full-time hire.
+                        </p>
 
                         <div className="space-y-10">
                             <div className="flex items-center gap-6 group cursor-pointer" onClick={() => window.location.href = 'mailto:hello@opound.com'}>
@@ -89,7 +93,7 @@ export const Contact: React.FC = () => {
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-1">Business Name *</label>
-                                            <input required type="text" name="businessName" className="w-full bg-slate-800/40 border border-slate-700/50 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600 shadow-inner" placeholder="Doe Dental" />
+                                            <input required type="text" name="businessName" className="w-full bg-slate-800/40 border border-slate-700/50 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600 shadow-inner" placeholder="Acme Capital Management" />
                                         </div>
                                     </div>
 
@@ -109,9 +113,13 @@ export const Contact: React.FC = () => {
                                         <div className="relative">
                                             <select required defaultValue="" name="businessType" className="w-full bg-slate-800/40 border border-slate-700/50 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all appearance-none cursor-pointer shadow-inner">
                                                 <option value="" disabled>Select your industry</option>
-                                                <option value="Dental Practice">Dental Practice</option>
-                                                <option value="HVAC Company">HVAC Company</option>
-                                                <option value="Other">Other</option>
+                                                <option value="FinTech / Payments">FinTech / Payments</option>
+                                                <option value="Digital Asset / Crypto">Digital Asset / Crypto</option>
+                                                <option value="RIA / Family Office / Fund">RIA / Family Office / Fund</option>
+                                                <option value="Compliance / Surveillance Platform">Compliance / Surveillance Platform</option>
+                                                <option value="Wealth Management / Insurance">Wealth Management / Insurance</option>
+                                                <option value="Legal / Professional Services">Legal / Professional Services</option>
+                                                <option value="Other Regulated Industry">Other Regulated Industry</option>
                                             </select>
                                             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
                                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -145,12 +153,12 @@ export const Contact: React.FC = () => {
                                         disabled={status === 'submitting'}
                                         className={`w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 uppercase tracking-widest text-xs mt-6 ${(status === 'submitting') ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer hover:-translate-y-0.5'}`}
                                     >
-                                        {status === 'submitting' ? 'Submitting...' : 'Book My Free AI Audit'} <ArrowRight size={16} />
+                                        {status === 'submitting' ? 'Submitting...' : 'Book a Strategy Call'} <ArrowRight size={16} />
                                     </button>
                                 </form>
                             )}
                             <p className="mt-6 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
-                                Confidentiality Assured • Free 30-Min Discovery Session
+                                Confidentiality Assured · 30-Min Strategy Call · Scope Proposal Within 48 Hours
                             </p>
                         </div>
                     </div>
