@@ -23,7 +23,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenBooking }) => {
             <section id="calculator" className="py-24 bg-slate-900 border-t border-slate-800">
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto">
-                        <ROICalculator />
+                        <ROICalculator onOpenBooking={onOpenBooking} />
                     </div>
                 </div>
             </section>

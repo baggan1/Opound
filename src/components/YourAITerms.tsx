@@ -1,10 +1,11 @@
 import React from 'react';
 import { SectionHeading } from './SectionHeading';
 import { Check } from 'lucide-react';
-import { CalendarModal } from './CalendarModal';
+interface YourAITermsProps {
+    onOpenBooking?: () => void;
+}
 
-export const YourAITerms: React.FC = () => {
-    const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
+export const YourAITerms: React.FC<YourAITermsProps> = ({ onOpenBooking }) => {
 
     return (
         <section id="ai-terms" className="py-24 bg-slate-900 border-t border-slate-800">
@@ -49,7 +50,7 @@ export const YourAITerms: React.FC = () => {
                                 The right path if you need AI systems running in production without managing the infrastructure yourself.
                             </p>
                             <button
-                                onClick={() => setIsCalendarOpen(true)}
+                                onClick={onOpenBooking}
                                 className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-2xl shadow-xl shadow-emerald-500/30 transition-all uppercase tracking-widest text-xs tracking-widest mt-2"
                             >
                                 Book a Strategy Call →
@@ -108,8 +109,6 @@ export const YourAITerms: React.FC = () => {
                         </p>
                     </div>
                 </div>
-
-                <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
             </div>
         </section>
     );

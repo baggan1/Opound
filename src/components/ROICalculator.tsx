@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useROI } from '../context/ROIContext';
-import { CalendarModal } from './CalendarModal';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -137,10 +136,13 @@ const Slider: React.FC<SliderProps> = ({ id, label, value, min, max, prefix = ''
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export const ROICalculator: React.FC = () => {
+interface ROICalculatorProps {
+    onOpenBooking?: () => void;
+}
+
+export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenBooking }) => {
     const [activeId, setActiveId] = useState<string>('fintech');
     const [transitioning, setTransitioning] = useState(false);
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     const { employees, setEmployees, hours, setHours, rate, setRate, losingAmount } = useROI();
 
@@ -322,7 +324,7 @@ export const ROICalculator: React.FC = () => {
                 {/* CTA Button */}
                 <div className="px-6 pb-6">
                     <button
-                        onClick={() => setIsCalendarOpen(true)}
+                        onClick={onOpenBooking}
                         className="w-full py-4 px-8 rounded-xl font-black uppercase tracking-widest text-sm transition-all duration-200 cursor-pointer"
                         style={{
                             background: `linear-gradient(135deg, ${accentDim}, ${accentDim}cc)`,
@@ -342,8 +344,6 @@ export const ROICalculator: React.FC = () => {
                     </button>
                 </div>
             </div>
-
-            <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
         </div>
     );
 };
