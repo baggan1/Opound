@@ -7,11 +7,15 @@ import { ServicesGrid } from '../components/ServicesGrid';
 import { ROICalculator } from '../components/ROICalculator';
 import { Contact } from '../components/Contact';
 
-export const Home: React.FC = () => {
+interface HomeProps {
+    onOpenBooking: () => void;
+}
+
+export const Home: React.FC<HomeProps> = ({ onOpenBooking }) => {
     return (
         <>
-            <Hero />
-            <WhoWeWorkWith />
+            <Hero onOpenBooking={onOpenBooking} />
+            <WhoWeWorkWith onOpenBooking={onOpenBooking} />
             <ServicesGrid />
             <ProvenTech />
             <EfficiencyLab />

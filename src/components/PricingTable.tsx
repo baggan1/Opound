@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
-import { CalendarModal } from './CalendarModal';
 
 // Define the shape of our new engagement tiers
 interface EngagementTier {
@@ -12,8 +11,11 @@ interface EngagementTier {
     comparisonSnippet?: string;
 }
 
-export const PricingTable: React.FC = () => {
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+interface PricingTableProps {
+    onOpenBooking: () => void;
+}
+
+export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => {
 
     const tiers: EngagementTier[] = [
         {
@@ -78,7 +80,7 @@ export const PricingTable: React.FC = () => {
                             </div>
                             <div className="w-full md:w-auto md:shrink-0 pt-2 md:pt-0">
                                 <button
-                                    onClick={() => setIsCalendarOpen(true)}
+                                    onClick={onOpenBooking}
                                     className="w-full md:w-auto bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-6 py-4 rounded-xl transition-all border border-slate-700/50 whitespace-nowrap"
                                 >
                                     Start with a Strategy Call
@@ -129,7 +131,7 @@ export const PricingTable: React.FC = () => {
 
                     <div className="flex flex-col items-center">
                         <button
-                            onClick={() => setIsCalendarOpen(true)}
+                            onClick={onOpenBooking}
                             className="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold px-10 py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all transform hover:-translate-y-1"
                         >
                             Book Your Strategy Call
@@ -137,9 +139,6 @@ export const PricingTable: React.FC = () => {
                         <p className="text-sm text-slate-500 mt-4 italic">30 minutes. No pitch deck. Just a direct conversation.</p>
                     </div>
                 </div>
-
-                {/* Zoho Calendar Modal Overlay */}
-                <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
             </div>
         </section>
     );

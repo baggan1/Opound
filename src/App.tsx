@@ -9,6 +9,7 @@ import { About } from './pages/About';
 import { Pricing } from './pages/Pricing';
 import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { BookingModal } from './components/BookingModal';
 
 
 const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
@@ -109,23 +110,30 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
 );
 
 export default function App() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
     <ROIProvider>
       <Router>
         <div className="min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
-          <Navbar />
+          <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
           <main>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/" element={<Home onOpenBooking={() => setIsBookingOpen(true)} />} />
+              <Route path="/about" element={<About onOpenBooking={() => setIsBookingOpen(true)} />} />
+              <Route path="/pricing" element={<Pricing onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
             </Routes>
           </main>
 
           <Footer onOpenLegal={() => { }} />
+          
+          <BookingModal 
+            isOpen={isBookingOpen} 
+            onClose={() => setIsBookingOpen(false)} 
+          />
         </div>
       </Router>
     </ROIProvider>

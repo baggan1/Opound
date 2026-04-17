@@ -2,7 +2,11 @@ import React from 'react';
 import { FounderBio } from '../components/FounderBio';
 import { TrustSection } from '../components/TrustSection';
 
-export const About: React.FC = () => {
+interface AboutProps {
+    onOpenBooking: () => void;
+}
+
+export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
     return (
         <div className="bg-slate-950 min-h-screen">
             <div className="pt-32 pb-16 text-center">
@@ -114,15 +118,12 @@ export const About: React.FC = () => {
 
             {/* Block 5: Calendly CTA */}
             <div className="pb-20 pt-10 text-center px-6">
-                <a
-                    href="https://calendar.zoho.com/zc/ui/embed/#calendar=zz080112301ff36847f46335da8e80ee4d12f8ac9425067f3e6f0f6486dbd39b4d0120142e50352b2ea7aca43d973c325351ab0dae&title=navilla&type=1&language=en&timezone=America%2FLos_Angeles&showTitle=1&showTimezone=1&view=day&showDetail=0&theme=1&eventColorType=light"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <button
+                    onClick={onOpenBooking}
                     className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-8 py-4 rounded-xl text-lg transition-colors"
-                    title="Book a Strategy Call"
                 >
                     Book a Strategy Call
-                </a>
+                </button>
                 <p className="text-slate-500 mt-4 text-sm max-w-2xl mx-auto">
                     30 minutes. Scoped to your situation.
                 </p>

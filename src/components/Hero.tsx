@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { CalendarModal } from './CalendarModal';
+interface HeroProps {
+    onOpenBooking: () => void;
+}
 
-export const Hero: React.FC = () => {
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
 
     return (
         <header className="pt-48 pb-32 relative overflow-hidden">
@@ -20,7 +21,7 @@ export const Hero: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
                     {/* Primary CTA */}
                     <button
-                        onClick={() => setIsCalendarOpen(true)}
+                        onClick={onOpenBooking}
                         className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold px-9 py-5 rounded-2xl shadow-2xl shadow-emerald-500/25 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center flex items-center justify-center gap-2"
                     >
                         Book a Strategy Call <ArrowRight className="w-4 h-4" />
@@ -31,12 +32,6 @@ export const Hero: React.FC = () => {
                 <p className="text-sm font-light text-slate-500 mt-6 max-w-xl mx-auto">
                     FinTech infrastructure, digital asset compliance, and production AI systems — built and shipped.
                 </p>
-
-                {/* Zoho Calendar Modal */}
-                <CalendarModal
-                    isOpen={isCalendarOpen}
-                    onClose={() => setIsCalendarOpen(false)}
-                />
             </div>
         </header>
     );

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { PricingTable } from '../components/PricingTable';
 import { PricingFAQ } from '../components/PricingFAQ';
-import { CalendarModal } from '../components/CalendarModal';
+interface PricingProps {
+    onOpenBooking: () => void;
+}
 
-export const Pricing: React.FC = () => {
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-
+export const Pricing: React.FC<PricingProps> = ({ onOpenBooking }) => {
     return (
         <>
-            <PricingTable />
+            <PricingTable onOpenBooking={onOpenBooking} />
             <PricingFAQ />
 
             {/* Closing CTA Section */}
@@ -23,7 +23,7 @@ export const Pricing: React.FC = () => {
                         a written scope proposal within 48 hours.
                     </p>
                     <button
-                        onClick={() => setIsCalendarOpen(true)}
+                        onClick={onOpenBooking}
                         className="bg-emerald-600 hover:bg-emerald-500 text-white text-base
                                    font-bold px-10 py-5 rounded-2xl shadow-xl shadow-emerald-500/20
                                    transition-all transform hover:-translate-y-1"
@@ -35,8 +35,6 @@ export const Pricing: React.FC = () => {
                     </p>
                 </div>
             </section>
-
-            <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
         </>
     );
 };

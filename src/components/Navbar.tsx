@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { CalendarModal } from './CalendarModal';
+interface NavbarProps {
+    onOpenBooking: () => void;
+}
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -79,7 +80,7 @@ export const Navbar: React.FC = () => {
                             )
                         ))}
                         <button
-                            onClick={() => setIsCalendarOpen(true)}
+                            onClick={onOpenBooking}
                             className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20 whitespace-nowrap ml-2"
                         >
                             Book a Strategy Call <ArrowRight className="w-4 h-4" />
@@ -117,7 +118,7 @@ export const Navbar: React.FC = () => {
                             )
                         ))}
                         <button
-                            onClick={() => { setIsOpen(false); setIsCalendarOpen(true); }}
+                            onClick={() => { setIsOpen(false); onOpenBooking(); }}
                             className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-lg shadow-emerald-500/20 mt-4"
                         >
                             Book a Strategy Call
@@ -125,9 +126,6 @@ export const Navbar: React.FC = () => {
                     </div>
                 </div>
             </nav>
-
-            {/* Zoho Calendar Modal Overlay */}
-            <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
         </>
     );
 };
