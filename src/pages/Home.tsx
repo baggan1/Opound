@@ -9,15 +9,16 @@ import { Contact } from '../components/Contact';
 
 interface HomeProps {
     onOpenBooking: () => void;
+    onOpenContact: (service?: string) => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ onOpenBooking }) => {
+export const Home: React.FC<HomeProps> = ({ onOpenBooking, onOpenContact }) => {
     return (
         <>
             <Hero onOpenBooking={onOpenBooking} />
             <WhoWeWorkWith onOpenBooking={onOpenBooking} />
             <ServicesGrid />
-            <ProvenTech />
+            <ProvenTech onOpenContact={onOpenContact} />
             <EfficiencyLab />
 
             <section id="calculator" className="py-24 bg-slate-900 border-t border-slate-800">

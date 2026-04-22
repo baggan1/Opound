@@ -1,8 +1,8 @@
-import React from 'react';
-import { ExternalLink, Shield, ArrowRight } from 'lucide-react';
-import { SectionHeading } from './SectionHeading';
+interface ProvenTechProps {
+    onOpenContact: (service?: string) => void;
+}
 
-export const ProvenTech: React.FC = () => (
+export const ProvenTech: React.FC<ProvenTechProps> = ({ onOpenContact }) => (
     <section id="case-studies" className="py-24 bg-slate-900 border-t border-slate-800">
         <div className="container mx-auto px-6 max-w-6xl">
             <SectionHeading
@@ -27,9 +27,12 @@ export const ProvenTech: React.FC = () => (
                                 <a href="https://fix.opound.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm font-bold inline-flex items-center gap-1 transition-colors">
                                     Try the free audit tool <ExternalLink size={14} />
                                 </a>
-                                <a href="mailto:navilla.bagga@gmail.com" className="text-[#00A372] hover:text-[#008f64] text-sm font-bold inline-flex items-center gap-1 transition-colors">
-                                    Request custom audit <ArrowRight size={14} />
-                                </a>
+                                <button 
+                                    onClick={() => onOpenContact('Crypto FIX Audit')}
+                                    className="text-[#00A372] hover:text-[#008f64] text-sm font-bold inline-flex items-center gap-1 transition-colors w-fit"
+                                >
+                                    Send message <ArrowRight size={14} />
+                                </button>
                             </div>
                         </div>
 

@@ -10,6 +10,7 @@ import { Pricing } from './pages/Pricing';
 import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { BookingModal } from './components/BookingModal';
+import { ContactModal } from './components/ContactModal';
 
 
 const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
@@ -111,6 +112,13 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [initialService, setInitialService] = useState('');
+
+  const openContact = (service?: string) => {
+    setInitialService(service || '');
+    setIsContactOpen(true);
+  };
 
   return (
     <ROIProvider>
@@ -120,7 +128,7 @@ export default function App() {
 
           <main>
             <Routes>
-              <Route path="/" element={<Home onOpenBooking={() => setIsBookingOpen(true)} />} />
+              <Route path="/" element={<Home onOpenBooking={() => setIsBookingOpen(true)} onOpenContact={openContact} />} />
               <Route path="/about" element={<About onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/pricing" element={<Pricing onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/terms" element={<TermsOfService />} />
@@ -133,6 +141,12 @@ export default function App() {
           <BookingModal 
             isOpen={isBookingOpen} 
             onClose={() => setIsBookingOpen(false)} 
+          />
+
+          <ContactModal
+            isOpen={isContactOpen}
+            onClose={() => setIsContactOpen(false)}
+            initialService={initialService}
           />
         </div>
       </Router>
