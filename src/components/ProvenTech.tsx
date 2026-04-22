@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Database, Layers } from 'lucide-react';
+import { ExternalLink, Shield, ArrowRight } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
 export const ProvenTech: React.FC = () => (
@@ -12,11 +12,52 @@ export const ProvenTech: React.FC = () => (
 
             <div className="flex flex-col gap-12 mt-16">
 
-                {/* Case Study 1: NatureNani */}
-                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-emerald-500/30 transition-colors shadow-2xl relative overflow-hidden">
+                {/* Case Study 0: CryptoFIX Auditor */}
+                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-[#00A372]/30 transition-colors shadow-2xl relative overflow-hidden">
                     {/* Subtle bg glow */}
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-500/5 blur-[100px] pointer-events-none rounded-full"></div>
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-[#00A372]/5 blur-[100px] pointer-events-none rounded-full"></div>
 
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                        <div className="w-full md:w-1/3">
+                            <div className="inline-flex items-center gap-2 bg-[#00A372]/10 text-[#00A372] border border-[#00A372]/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+                                REGULATORY TECH
+                            </div>
+                            <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">CryptoFIX Auditor</h3>
+                            <div className="flex flex-col gap-3">
+                                <a href="https://fix.opound.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm font-bold inline-flex items-center gap-1 transition-colors">
+                                    Try the free audit tool <ExternalLink size={14} />
+                                </a>
+                                <a href="mailto:navilla.bagga@gmail.com" className="text-[#00A372] hover:text-[#008f64] text-sm font-bold inline-flex items-center gap-1 transition-colors">
+                                    Request custom audit <ArrowRight size={14} />
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="w-full md:w-2/3 space-y-8">
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Problem</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    Crypto exchanges struggle to attract institutional capital due to non-standard FIX implementations and lack of TradFi-grade Rules of Engagement (RoE) documentation.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Approach</h4>
+                                <p className="text-slate-300 leading-relaxed font-light">
+                                    Built an automated audit engine that validates FIX protocol sessions against institutional expectations. Integrated lead-gated RoE generation and custom remediation roadmapping.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] uppercase tracking-widest text-[#00A372] font-bold mb-2">Result</h4>
+                                <p className="text-white leading-relaxed font-medium">
+                                    Launched at <a href="https://fix.opound.com" className="underline underline-offset-4 decoration-[#00A372]">fix.opound.com</a>. Provides instant institutional readiness scoring and automated gap analysis for exchange connectivity teams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Case Study 1: NatureNani */}
+                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-slate-700/50 transition-colors shadow-xl relative overflow-hidden opacity-80 hover:opacity-100">
                     <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
                         <div className="w-full md:w-1/3">
                             <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
@@ -43,8 +84,8 @@ export const ProvenTech: React.FC = () => (
                             </div>
                             <div>
                                 <h4 className="text-[10px] uppercase tracking-widest text-emerald-500 font-bold mb-2">Result</h4>
-                                <p className="text-white leading-relaxed font-medium">
-                                    Sub-250ms average query latency. Live SaaS with 1,000+ active users and Stripe billing in production. Full-stack ownership from architecture through deployment.
+                                <p className="text-white leading-relaxed font-medium text-sm">
+                                    Sub-250ms average query latency. Live SaaS with 1,000+ active users and Stripe billing in production.
                                 </p>
                             </div>
                         </div>
@@ -52,16 +93,13 @@ export const ProvenTech: React.FC = () => (
                 </div>
 
                 {/* Case Study 2: Dental Practice AI Platform */}
-                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-blue-500/30 transition-colors shadow-2xl relative overflow-hidden">
-                    {/* Subtle bg glow */}
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-500/5 blur-[100px] pointer-events-none rounded-full"></div>
-
+                <div className="bg-[#0a0f1e] border border-slate-800 rounded-3xl p-8 md:p-12 hover:border-slate-700/50 transition-colors shadow-xl relative overflow-hidden opacity-80 hover:opacity-100">
                     <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
                         <div className="w-full md:w-1/3">
                             <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
                                 OPERATIONAL AUTOMATION
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Dental Practice AI Platform</h3>
+                            <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Dental AI Platform</h3>
                             <a href="https://demo.opound.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 text-sm font-bold inline-flex items-center gap-1 transition-colors">
                                 Try the demo <ExternalLink size={14} />
                             </a>
@@ -70,20 +108,14 @@ export const ProvenTech: React.FC = () => (
                         <div className="w-full md:w-2/3 space-y-8">
                             <div>
                                 <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Problem</h4>
-                                <p className="text-slate-300 leading-relaxed font-light">
-                                    A dental practice's front desk bottlenecked by appointment booking, patient intake, and insurance questions — tasks consuming staff time that didn't require a human.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Approach</h4>
-                                <p className="text-slate-300 leading-relaxed font-light">
-                                    Multi-component AI platform: RAG chatbot for insurance/procedure FAQs, Calendly-integrated booking flow with patient data collection, HubSpot CRM sync, and an admin dashboard with document management and analytics.
+                                <p className="text-slate-300 leading-relaxed font-light text-sm">
+                                    A dental practice's front desk bottlenecked by appointment booking, patient intake, and insurance questions.
                                 </p>
                             </div>
                             <div>
                                 <h4 className="text-[10px] uppercase tracking-widest text-blue-400 font-bold mb-2">Result</h4>
-                                <p className="text-white leading-relaxed font-medium">
-                                    End-to-end system handling booking, intake, and FAQ autonomously. Admin dashboard gives practice owner full visibility into every conversation and booking event. Demonstrates AI deployment in a compliance-adjacent, regulated-adjacent vertical.
+                                <p className="text-white leading-relaxed font-medium text-sm">
+                                    End-to-end system handling booking, intake, and FAQ autonomously. HubSpot CRM sync and admin dashboard.
                                 </p>
                             </div>
                         </div>
