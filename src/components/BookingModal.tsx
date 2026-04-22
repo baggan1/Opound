@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { X, ArrowRight, ChevronLeft, Loader2 } from 'lucide-react';
+import { X, ArrowRight, ChevronLeft, Loader2, ShieldCheck } from 'lucide-react';
 import { InlineWidget } from 'react-calendly';
+import { useForm } from 'react-hook-form';
+import { STRATEGY_SERVICES } from '../constants/services';
 
 interface FormData {
-    name: string;
+    fullName: string;
     email: string;
+    company?: string;
+    role?: string;
+    service: string;
+    message: string;
 }
 
 interface BookingModalProps {
@@ -14,26 +20,42 @@ interface BookingModalProps {
 
 export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     const [step, setStep] = useState<1 | 2>(1);
-    const [formData, setFormData] = useState<FormData>({ name: '', email: '' });
-    const [emailError, setEmailError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState('');
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
+    
+    const formData = watch();
 
     if (!isOpen) return null;
 
-    const validateEmail = (email: string) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    };
+    const onSubmit = async (data: FormData) => {
+        setIsSubmitting(true);
+        setSubmitError('');
+        try {
+            const response = await fetch('/api/capture-lead-v2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    full_name: data.fullName,
+                    email: data.email,
+                    company: data.company,
+                    role: data.role,
+                    service: data.service,
+                    message: data.message,
+                    source: 'strategy_call'
+                }),
+            });
 
-    const handleContinue = () => {
-        if (!formData.name.trim()) {
-            return;
+            if (!response.ok) {
+                throw new Error('Failed to capture lead. Please try again.');
+            }
+
+            setStep(2);
+        } catch (error: any) {
+            setSubmitError(error.message);
+        } finally {
+            setIsSubmitting(false);
         }
-        if (!validateEmail(formData.email)) {
-            setEmailError('Please enter a valid email address');
-            return;
-        }
-        setEmailError('');
-        setStep(2);
     };
 
     const handleBack = () => {
@@ -69,10 +91,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                 {/* Content */}
                 <div className="flex-grow overflow-y-auto p-8">
                     {step === 1 ? (
-                        <div className="max-w-md mx-auto py-10">
+                        <form onSubmit={handleSubmit(onSubmit)} className="max-w-2xl mx-auto py-4">
                             <div className="text-center mb-10">
-                                <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 px-4 py-1.5 rounded-full text-xs font-bold mb-4 uppercase tracking-widest">
-                                    Step 1 of 2
+                                <div className="inline-flex items-center gap-2 bg-[#00A372]/10 text-[#00A372] px-4 py-1.5 rounded-full text-xs font-bold mb-4 uppercase tracking-widest">
+                                    Step 1 of 2: Lead Information
                                 </div>
                                 <h3 className="text-3xl font-black text-white mb-4 tracking-tighter">
                                     Who are we meeting?
@@ -83,18 +105,18 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                                 </p>
                             </div>
 
-                            <div className="space-y-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <div>
                                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
                                         Full Name
                                     </label>
                                     <input
+                                        {...register('fullName', { required: 'Full name is required' })}
                                         type="text"
                                         placeholder="Enter your name"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all placeholder:text-slate-600"
+                                        className={`w-full bg-slate-900 border ${errors.fullName ? 'border-red-500' : 'border-slate-800'} rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all placeholder:text-slate-600`}
                                     />
+                                    {errors.fullName && <p className="text-red-500 text-xs mt-1 ml-1">{errors.fullName.message}</p>}
                                 </div>
 
                                 <div>
@@ -102,35 +124,100 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                                         Work Email
                                     </label>
                                     <input
+                                        {...register('email', { 
+                                            required: 'Work email is required',
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                message: "Invalid email address"
+                                            }
+                                        })}
                                         type="email"
                                         placeholder="email@company.com"
-                                        value={formData.email}
-                                        onChange={(e) => {
-                                            setFormData({ ...formData, email: e.target.value });
-                                            if (emailError) setEmailError('');
-                                        }}
-                                        className={`w-full bg-slate-900 border ${emailError ? 'border-red-500/50' : 'border-slate-800'} rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all placeholder:text-slate-600`}
+                                        className={`w-full bg-slate-900 border ${errors.email ? 'border-red-500' : 'border-slate-800'} rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all placeholder:text-slate-600`}
                                     />
-                                    {emailError && (
-                                        <p className="text-red-400 text-xs mt-2 ml-1 font-medium">{emailError}</p>
-                                    )}
+                                    {errors.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email.message}</p>}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                                        Company Name <span className="text-slate-600">(Optional)</span>
+                                    </label>
+                                    <input
+                                        {...register('company')}
+                                        type="text"
+                                        placeholder="e.g. Acme Corp"
+                                        className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all placeholder:text-slate-600"
+                                    />
                                 </div>
 
-                                <button
-                                    onClick={handleContinue}
-                                    disabled={!formData.name.trim() || !formData.email.trim()}
-                                    className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-lg font-bold py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-3 mt-4"
-                                >
-                                    Continue to Scheduling <ArrowRight className="w-5 h-5" />
-                                </button>
+                                <div>
+                                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                                        Role <span className="text-slate-600">(Optional)</span>
+                                    </label>
+                                    <input
+                                        {...register('role')}
+                                        type="text"
+                                        placeholder="e.g. CTO, Founder"
+                                        className="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all placeholder:text-slate-600"
+                                    />
+                                </div>
                             </div>
-                        </div>
+
+                            <div className="mb-6">
+                                <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                                    Interested Service
+                                </label>
+                                <select
+                                    {...register('service', { required: 'Please select a service' })}
+                                    className={`w-full bg-slate-900 border ${errors.service ? 'border-red-500' : 'border-slate-800'} rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all appearance-none cursor-pointer`}
+                                >
+                                    <option value="" disabled selected>Select a service...</option>
+                                    {STRATEGY_SERVICES.map(s => (
+                                        <option key={s} value={s}>{s}</option>
+                                    ))}
+                                </select>
+                                {errors.service && <p className="text-red-500 text-xs mt-1 ml-1">{errors.service.message}</p>}
+                            </div>
+
+                            <div className="mb-6">
+                                <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                                    What are you looking to solve?
+                                </label>
+                                <textarea
+                                    {...register('message', { required: 'Please describe what you are looking to solve' })}
+                                    rows={3}
+                                    placeholder="Tell us about your current challenges..."
+                                    className={`w-full bg-slate-900 border ${errors.message ? 'border-red-500' : 'border-slate-800'} rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-[#00A372]/50 transition-all placeholder:text-slate-600 resize-none`}
+                                />
+                                {errors.message && <p className="text-red-500 text-xs mt-1 ml-1">{errors.message.message}</p>}
+                            </div>
+
+                            {submitError && (
+                                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm text-center">
+                                    {submitError}
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full bg-[#00A372] hover:bg-[#008f64] disabled:opacity-50 disabled:cursor-not-allowed text-white text-lg font-bold py-5 rounded-2xl shadow-xl shadow-[#00A372]/20 transition-all flex items-center justify-center gap-3 mt-4"
+                            >
+                                {isSubmitting ? (
+                                    <Loader2 className="w-6 h-6 animate-spin" />
+                                ) : (
+                                    <>Continue to Scheduling <ArrowRight className="w-5 h-5" /></>
+                                )}
+                            </button>
+                        </form>
                     ) : (
                         <div className="w-full h-full min-h-[600px]">
                             <InlineWidget
                                 url="https://calendly.com/navilla-bagga/30min"
                                 prefill={{
-                                    name: formData.name,
+                                    name: formData.fullName,
                                     email: formData.email,
                                 }}
                                 styles={{
@@ -143,9 +230,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                 </div>
 
                 {/* Footer Info */}
-                <div className="p-6 border-t border-slate-800 text-center">
-                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">
-                        Confidentiality Assured • Clear Scope Proposal within 48 Hours
+                <div className="p-6 border-t border-slate-800 text-center flex flex-col md:flex-row items-center justify-center gap-4">
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                        <ShieldCheck className="w-3 h-3 text-[#00A372]" /> Confidentiality Assured • Clear Scope Proposal within 48 Hours
                     </p>
                 </div>
             </div>

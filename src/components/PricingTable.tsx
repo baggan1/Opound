@@ -81,7 +81,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => 
                             <div className="w-full md:w-auto md:shrink-0 pt-2 md:pt-0">
                                 <button
                                     onClick={onOpenBooking}
-                                    className="w-full md:w-auto bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-6 py-4 rounded-xl transition-all border border-slate-700/50 whitespace-nowrap"
+                                    className="w-full md:w-auto bg-[#00A372]/10 hover:bg-[#00A372] text-white hover:text-white text-sm font-bold px-6 py-4 rounded-xl transition-all border border-[#00A372]/20 whitespace-nowrap"
                                 >
                                     Start with a Strategy Call
                                 </button>
@@ -99,7 +99,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => 
                         <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-px bg-slate-800"></div>
 
                         <div className="relative text-center group">
-                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-emerald-500/50 transition-colors">
+                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-[#00A372] rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-[#00A372]/50 transition-colors">
                                 1
                             </div>
                             <h4 className="text-white font-bold mb-3">Strategy Call (30 min)</h4>
@@ -109,7 +109,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => 
                         </div>
 
                         <div className="relative text-center group">
-                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-emerald-500/50 transition-colors">
+                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-[#00A372] rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-[#00A372]/50 transition-colors">
                                 2
                             </div>
                             <h4 className="text-white font-bold mb-3">Scope Proposal</h4>
@@ -119,7 +119,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => 
                         </div>
 
                         <div className="relative text-center group">
-                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-emerald-500/50 transition-colors">
+                            <div className="w-14 h-14 bg-slate-900 border border-slate-700 text-[#00A372] rounded-2xl flex items-center justify-center font-black text-xl mx-auto mb-6 relative z-10 group-hover:bg-slate-800 group-hover:border-[#00A372]/50 transition-colors">
                                 3
                             </div>
                             <h4 className="text-white font-bold mb-3">Engagement Begins</h4>
@@ -132,7 +132,7 @@ export const PricingTable: React.FC<PricingTableProps> = ({ onOpenBooking }) => 
                     <div className="flex flex-col items-center">
                         <button
                             onClick={onOpenBooking}
-                            className="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold px-10 py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all transform hover:-translate-y-1"
+                            className="bg-[#00A372] hover:bg-[#008f64] text-white text-base font-bold px-10 py-5 rounded-2xl shadow-xl shadow-[#00A372]/20 transition-all transform hover:-translate-y-1"
                         >
                             Book Your Strategy Call
                         </button>

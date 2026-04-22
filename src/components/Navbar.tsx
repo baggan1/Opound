@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex items-center justify-between">
                     <Link to="/" onClick={() => handleNavClick('/')} className="flex items-center gap-2 group cursor-pointer">
-                        <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-white text-2xl group-hover:rotate-12 transition-transform">
+                        <div className="w-10 h-10 bg-[#00A372] rounded-xl flex items-center justify-center font-bold text-white text-2xl group-hover:rotate-12 transition-transform">
                             O
                         </div>
                         <span className="text-xl font-bold tracking-tight text-white">Opound LLC</span>
@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                         ))}
                         <button
                             onClick={onOpenBooking}
-                            className="bg-emerald-600 hover:bg-emerald-500 hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20 whitespace-nowrap ml-2"
+                            className="bg-[#00A372] hover:bg-[#008f64] hover:scale-105 active:scale-95 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm shadow-lg shadow-[#00A372]/20 whitespace-nowrap ml-2"
                         >
                             Book a Strategy Call <ArrowRight className="w-4 h-4" />
                         </button>
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                         ))}
                         <button
                             onClick={() => { setIsOpen(false); onOpenBooking(); }}
-                            className="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-lg shadow-emerald-500/20 mt-4"
+                            className="bg-[#00A372] text-white px-10 py-4 rounded-full text-xl font-bold shadow-lg shadow-[#00A372]/20 mt-4"
                         >
                             Book a Strategy Call
                         </button>

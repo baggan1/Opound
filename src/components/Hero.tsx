@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
                     {/* Primary CTA */}
                     <button
                         onClick={onOpenBooking}
-                        className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold px-9 py-5 rounded-2xl shadow-2xl shadow-emerald-500/25 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto bg-[#00A372] hover:bg-[#008f64] text-white text-base font-bold px-9 py-5 rounded-2xl shadow-2xl shadow-[#00A372]/25 transition-all transform hover:-translate-y-1 active:translate-y-0 text-center flex items-center justify-center gap-2"
                     >
                         Book a Strategy Call <ArrowRight className="w-4 h-4" />
                     </button>
