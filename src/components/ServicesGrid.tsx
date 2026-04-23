@@ -39,11 +39,10 @@ export const ServicesGrid: React.FC = () => {
             icon: <Users size={28} />
         },
         {
-            title: "CryptoFIX Institutional Readiness Audit",
-            tagline: "For crypto exchanges, institutional connectivity teams, and compliance providers.",
-            description: "Score your FIX implementation against TradFi institutional standards. Get a detailed gap analysis, remediation roadmap, and Rules of Engagement document — built on 15 years of FIX protocol expertise at Wellington Management and Solidus Labs.",
-            engagement: "FIX PROTOCOL • INSTITUTIONAL GRADE",
-            icon: <Shield size={28} />
+            title: "AI Readiness Audit",
+            description: "A structured 2-week engagement that maps your operational landscape, identifies where AI creates defensible leverage, and delivers a prioritized implementation roadmap. Designed for firms that want to move deliberately, not experimentally.",
+            engagement: "Fixed-Scope · 2-week engagement",
+            icon: <Search size={28} />
         },
         {
             title: "Integration & Delivery Sprint",
