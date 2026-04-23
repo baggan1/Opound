@@ -16,7 +16,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenBooking, onOpenContact }) => {
     return (
         <>
             <Hero onOpenBooking={onOpenBooking} />
-            <WhoWeWorkWith onOpenBooking={onOpenBooking} />
+            <WhoWeWorkWith />
             <ServicesGrid />
             <ProvenTech onOpenContact={onOpenContact} />
             <EfficiencyLab />

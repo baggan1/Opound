@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import React from 'react';
+import { ArrowDown } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 
 interface TargetSegment {
@@ -7,11 +7,8 @@ interface TargetSegment {
     description: string;
 }
 
-interface WhoWeWorkWithProps {
-    onOpenBooking: () => void;
-}
-
-export const WhoWeWorkWith: React.FC<WhoWeWorkWithProps> = ({ onOpenBooking }) => {
+// No onOpenBooking prop needed — CTA replaced with scroll-to-services
+export const WhoWeWorkWith: React.FC = () => {
 
     const segments: TargetSegment[] = [
         {
@@ -31,6 +28,11 @@ export const WhoWeWorkWith: React.FC<WhoWeWorkWithProps> = ({ onOpenBooking }) =
             description: "Wealth management, insurance, and legal firms that need a credible, security-conscious entry point into AI — not a demo, not a whitepaper. A scoped engagement with a defensible outcome."
         }
     ];
+
+    const scrollToServices = () => {
+        const el = document.getElementById('services');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
         <section id="who-we-work-with" className="py-24 bg-slate-900 border-t border-slate-800/50 relative overflow-hidden">
@@ -53,15 +55,17 @@ export const WhoWeWorkWith: React.FC<WhoWeWorkWithProps> = ({ onOpenBooking }) =
                     ))}
                 </div>
 
+                {/* Replaced booking CTA with a softer scroll-forward — user hasn't seen the work yet */}
                 <div className="text-center max-w-3xl mx-auto border-t border-slate-800 pt-16">
                     <p className="text-xl font-medium text-slate-300 mb-8 italic">
                         "If your AI initiative needs to survive a compliance review — that's the work we do."
                     </p>
                     <button
-                        onClick={onOpenBooking}
-                        className="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold px-10 py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all transform hover:-translate-y-1 inline-flex items-center gap-2"
+                        onClick={scrollToServices}
+                        className="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors group"
                     >
-                        Book a Strategy Call <ArrowRight className="w-4 h-4" />
+                        See how we engage
+                        <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                     </button>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 interface NavbarProps {
     onOpenBooking: () => void;
 }
@@ -17,10 +18,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Removed "Who We Work With" — orient-only section, not a nav destination
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/#services' },
-        { name: 'Who We Work With', path: '/#who-we-work-with' },
         { name: 'Work', path: '/#work' },
         { name: 'Pricing', path: '/pricing' },
         { name: 'About', path: '/about' },
@@ -32,7 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             const section = path.substring(2);
             if (location.pathname !== '/') {
                 navigate('/');
-                // Need a slight delay to let the page render before scrolling
                 setTimeout(() => {
                     const el = document.getElementById(section);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
