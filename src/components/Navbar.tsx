@@ -21,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/#services' },
         { name: 'Who We Work With', path: '/#who-we-work-with' },
-        { name: 'Work', path: '/#case-studies' },
+        { name: 'Work', path: '/#work' },
         { name: 'Pricing', path: '/pricing' },
         { name: 'About', path: '/about' },
     ];

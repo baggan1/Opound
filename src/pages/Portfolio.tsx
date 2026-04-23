@@ -70,7 +70,7 @@ function StackTable({ rows }: { rows: typeof NATURENANI_STACK }) {
     <div className="rounded-xl overflow-hidden border border-gray-800">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-gray-900 border-b border-gray-800">
+          <tr className="bg-slate-800 border-b border-slate-700">
             <th className="text-left text-xs font-mono text-gray-500 uppercase tracking-widest px-4 py-3 w-1/4">Layer</th>
             <th className="text-left text-xs font-mono text-gray-500 uppercase tracking-widest px-4 py-3 w-1/3">Technology</th>
             <th className="text-left text-xs font-mono text-gray-500 uppercase tracking-widest px-4 py-3">Detail</th>
@@ -80,7 +80,7 @@ function StackTable({ rows }: { rows: typeof NATURENANI_STACK }) {
           {rows.map((row, i) => (
             <tr
               key={row.layer}
-              className={`border-b border-gray-800/60 ${i % 2 === 0 ? "bg-gray-950" : "bg-black"}`}
+              className={`border-b border-gray-800/60 ${i % 2 === 0 ? "bg-slate-950" : "bg-slate-900"}`}
             >
               <td className="px-4 py-3 font-semibold text-gray-300 align-top">{row.layer}</td>
               <td className="px-4 py-3 text-[#00A372] font-mono text-xs align-top leading-relaxed">{row.tech}</td>
@@ -95,10 +95,10 @@ function StackTable({ rows }: { rows: typeof NATURENANI_STACK }) {
 
 export function Portfolio() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-slate-900 text-white">
 
       {/* ── Back nav ── */}
-      <div className="border-b border-gray-900 px-6 py-4">
+      <div className="border-b border-slate-800/60 px-6 py-4">
         <div className="max-w-5xl mx-auto">
           <a
             href="/"
@@ -161,7 +161,7 @@ export function Portfolio() {
           </div>
 
           {/* Architecture headline */}
-          <div className="rounded-xl bg-gray-950 border border-gray-800 px-6 py-5 mb-6">
+          <div className="rounded-xl bg-slate-950 border border-gray-800 px-6 py-5 mb-6">
             <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3">Build Scope</p>
             <div className="grid sm:grid-cols-3 gap-4 text-center">
               {[
@@ -169,7 +169,7 @@ export function Portfolio() {
                 { label: "RAG Source", value: "Sanskrit texts", sub: "pgvector + Supabase" },
                 { label: "Monetization", value: "Stripe SaaS", sub: "Trials → Subscriptions" },
               ].map(({ label, value, sub }) => (
-                <div key={label} className="rounded-lg bg-black border border-gray-800 px-4 py-4">
+                <div key={label} className="rounded-lg bg-slate-950/80 border border-gray-800 px-4 py-4">
                   <div className="text-xs font-mono text-gray-600 mb-1">{label}</div>
                   <div className="text-base font-bold text-[#00A372]">{value}</div>
                   <div className="text-xs text-gray-600 mt-0.5">{sub}</div>
@@ -186,7 +186,7 @@ export function Portfolio() {
             {NATURENANI_AGENTIC_STEPS.map(({ step, title, detail }) => (
               <div
                 key={step}
-                className="flex gap-4 rounded-xl border border-gray-800 bg-gray-950 px-5 py-4"
+                className="flex gap-4 rounded-xl border border-gray-800 bg-slate-950 px-5 py-4"
               >
                 <span className="text-xs font-mono font-black text-[#00A372] mt-0.5 shrink-0">{step}</span>
                 <div>
@@ -204,7 +204,7 @@ export function Portfolio() {
           <StackTable rows={NATURENANI_STACK} />
         </section>
 
-        <div className="border-t border-gray-900 my-12" />
+        <div className="border-t border-slate-800/60 my-12" />
 
         {/* ══════════════════════════════════════════════════════════
             DENTAL DEMO
@@ -235,24 +235,24 @@ export function Portfolio() {
           </div>
 
           {/* Phase tracker */}
-          <div className="rounded-xl bg-gray-950 border border-gray-800 px-6 py-5 mb-6">
+          <div className="rounded-xl bg-slate-950 border border-gray-800 px-6 py-5 mb-6">
             <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Build Phases</p>
             <div className="space-y-2">
               {DENTAL_PHASES.map(({ phase, label, detail }) => (
                 <div key={phase} className="flex items-start gap-4">
                   <div className="flex items-center gap-2 shrink-0 w-36">
-                    <span className="text-xs font-mono text-gray-600">{phase}</span>
+                    <span className="text-xs font-mono text-slate-600">{phase}</span>
                     <span
                       className={`text-xs font-mono font-bold px-1.5 py-0.5 rounded ${
                         label === "Complete"
                           ? "bg-[#00A372]/15 text-[#00A372]"
-                          : "bg-gray-800 text-gray-500"
+                          : "bg-slate-900 text-slate-500"
                       }`}
                     >
                       {label}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 leading-relaxed">{detail}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{detail}</p>
                 </div>
               ))}
             </div>
@@ -271,7 +271,7 @@ export function Portfolio() {
               { icon: "◈", title: "Admin Dashboard", body: "Clerk-protected /admin — document upload/ingestion, settings, analytics, full conversation history with transcripts." },
               { icon: "◈", title: "Multi-tenant Foundation", body: "All Supabase tables have tenant_id. Settings cached per tenant. Dynamic Pinecone namespace designed for Phase 4." },
             ].map(({ icon, title, body }) => (
-              <div key={title} className="rounded-xl border border-gray-800 bg-gray-950 px-5 py-4">
+              <div key={title} className="rounded-xl border border-gray-800 bg-slate-950 px-5 py-4">
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="text-[#00A372] text-sm">{icon}</span>
                   <span className="text-sm font-bold text-gray-200">{title}</span>
@@ -289,7 +289,7 @@ export function Portfolio() {
         </section>
 
         {/* ── Footer note ── */}
-        <div className="mt-16 pt-8 border-t border-gray-900 text-center">
+        <div className="mt-16 pt-8 border-t border-slate-800/60 text-center">
           <p className="text-sm text-gray-600">
             Opound LLC · Fractional AI Product Leadership for FinTech & Regulated Financial Services
           </p>

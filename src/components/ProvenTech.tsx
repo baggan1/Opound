@@ -78,7 +78,7 @@ function ExchangeCard({ exchange }: { exchange: typeof EXCHANGE_SCORES[0] }) {
 
   return (
     <div
-      className="rounded-2xl border border-gray-800 bg-gray-950 p-6 flex flex-col gap-4"
+      className="rounded-2xl border border-gray-800 bg-slate-950 p-6 flex flex-col gap-4"
       style={{ boxShadow: `0 0 0 1px ${ringColor}22` }}
     >
       {/* Header */}
@@ -132,7 +132,7 @@ function ExchangeCard({ exchange }: { exchange: typeof EXCHANGE_SCORES[0] }) {
 
 export function ProvenTech({ onOpenContact }: { onOpenContact?: (service?: string) => void }) {
   return (
-    <section id="work" className="py-24 bg-black">
+    <section id="work" className="py-24 bg-slate-900">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* ── Section label ── */}
@@ -152,7 +152,7 @@ export function ProvenTech({ onOpenContact }: { onOpenContact?: (service?: strin
         {/* ══════════════════════════════════════════════════════════
             CRYPTOFIX — FEATURED CASE STUDY
         ══════════════════════════════════════════════════════════ */}
-        <div className="rounded-3xl border border-[#00A372]/30 bg-gray-950 overflow-hidden mb-8">
+        <div className="rounded-3xl border border-[#00A372]/30 bg-slate-950 overflow-hidden mb-8">
 
           {/* Case study header */}
           <div className="px-8 pt-8 pb-6 border-b border-gray-800">
@@ -238,7 +238,7 @@ export function ProvenTech({ onOpenContact }: { onOpenContact?: (service?: strin
             </div>
 
             {/* Shared gaps */}
-            <div className="mt-6 rounded-xl border border-gray-800 bg-black p-5">
+            <div className="mt-6 rounded-xl border border-gray-800 bg-slate-950 p-5">
               <p className="text-xs font-mono font-bold text-gray-500 uppercase tracking-widest mb-4">
                 Shared Industry Gaps — Both Exchanges
               </p>
@@ -264,7 +264,7 @@ export function ProvenTech({ onOpenContact }: { onOpenContact?: (service?: strin
         {/* ══════════════════════════════════════════════════════════
             NATURENANI — SUBORDINATE CAPABILITY CARD
         ══════════════════════════════════════════════════════════ */}
-        <div className="rounded-2xl border border-gray-800 bg-gray-950/60 px-7 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <div className="rounded-2xl border border-gray-800 bg-slate-950/60 px-7 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <div className="flex items-start gap-4">
             <div className="mt-0.5 w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-800 flex items-center justify-center shrink-0 text-base">
               🌿
