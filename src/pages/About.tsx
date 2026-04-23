@@ -42,7 +42,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
                     <p className="text-slate-400 text-lg">Three domains that are rare to find in one practitioner.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Pillar 1 */}
+                    {/* Pillar 1 — unchanged */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
                             INSTITUTIONAL COMPLIANCE
@@ -53,7 +53,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
                         </p>
                     </div>
 
-                    {/* Pillar 2 */}
+                    {/* Pillar 2 — unchanged */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
                             ENTERPRISE FINTECH
@@ -64,23 +64,23 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
                         </p>
                     </div>
 
-                    {/* Pillar 3 */}
+                    {/* Pillar 3 — UPDATED: removed NatureNani/dental, replaced with CryptoFIX + builder proof */}
                     <div className="bg-[#0a0f1e] border border-emerald-500/30 rounded-2xl p-8 shadow-lg shadow-emerald-500/5 hover:border-emerald-500/60 transition-colors flex flex-col h-full">
                         <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 w-fit">
                             LIVE PRODUCTION SYSTEMS
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Production AI, Not Slide Decks</h3>
+                        <h3 className="text-xl font-bold text-white mb-3">Production AI in the Domain, Not Adjacent to It</h3>
                         <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
-                            Opound's AI systems are in production. A RAG platform serving 1,000+ active users (NatureNani) and an end-to-end dental practice automation system (booking, intake, CRM, admin dashboard) — both built and operated by Opound. The difference between a strategist and a builder matters when you need something to ship.
+                            Opound's AI work is in production in regulated financial infrastructure. CryptoFIX — an automated FIX protocol readiness auditor for institutional crypto connectivity — is a live, deployed tool that scores exchanges against an 80+ checkpoint rubric built from real TradFi certification standards. The difference between a strategist and a builder matters. Every engagement is backed by someone who has shipped in this domain.
                         </p>
-                        <a href="/#case-studies" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
-                            View case studies <span className="ml-1 tracking-tighter">→</span>
+                        <a href="/#work" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm inline-flex items-center transition-colors">
+                            View CryptoFIX <span className="ml-1 tracking-tighter">→</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            {/* Block 3: How We Work */}
+            {/* Block 3: How We Work — unchanged */}
             <div className="max-w-3xl mx-auto px-6 pb-24">
                 <div className="border-l-4 border-emerald-500 pl-8 space-y-4">
                     <h2 className="text-2xl font-bold text-white mb-6">

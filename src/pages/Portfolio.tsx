@@ -126,7 +126,7 @@ export function Portfolio() {
           </p>
           <div className="mt-4 text-sm text-gray-600 border-l-2 border-gray-800 pl-4">
             The primary Opound LLC practice focuses on FinTech and regulated financial services.{" "}
-            <a href="/#work" className="text-[#00A372] hover:underline">
+            <a href="https://fix.opound.com/" target="_blank" rel="noopener noreferrer" className="text-[#00A372] hover:underline">
               See CryptoFIX Auditor →
             </a>
           </div>
