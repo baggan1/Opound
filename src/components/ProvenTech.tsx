@@ -130,7 +130,7 @@ function ExchangeCard({ exchange }: { exchange: typeof EXCHANGE_SCORES[0] }) {
   );
 }
 
-export default function ProvenTech() {
+export function ProvenTech({ onOpenContact }: { onOpenContact?: (service?: string) => void }) {
   return (
     <section id="work" className="py-24 bg-black">
       <div className="max-w-6xl mx-auto px-6">

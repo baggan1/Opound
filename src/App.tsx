@@ -11,7 +11,7 @@ import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { BookingModal } from './components/BookingModal';
 import { ContactModal } from './components/ContactModal';
-import Portfolio from "./pages/Portfolio";
+import { Portfolio } from "./pages/Portfolio";
 
 
 

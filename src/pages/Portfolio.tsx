@@ -93,7 +93,7 @@ function StackTable({ rows }: { rows: typeof NATURENANI_STACK }) {
   );
 }
 
-export default function Portfolio() {
+export function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-white">
 
