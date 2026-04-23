@@ -1,3 +1,7 @@
+import React from 'react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import { SectionHeading } from './SectionHeading';
+
 interface ProvenTechProps {
     onOpenContact: (service?: string) => void;
 }
