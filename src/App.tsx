@@ -11,6 +11,8 @@ import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { BookingModal } from './components/BookingModal';
 import { ContactModal } from './components/ContactModal';
+import Portfolio from "./pages/Portfolio";
+
 
 
 const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
@@ -133,6 +135,8 @@ export default function App() {
               <Route path="/pricing" element={<Pricing onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+
             </Routes>
           </main>
 
