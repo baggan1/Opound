@@ -16,7 +16,6 @@ export default async function handler(req: any, res: any) {
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     const resendApiKey = process.env.RESEND_API_KEY;
 
-    // Fail hard if critical database variables are missing
     if (!supabaseUrl || !supabaseKey) {
       console.error('Critical Error: Missing Supabase environment variables');
       return res.status(500).json({ error: 'Database configuration error' });
@@ -40,30 +39,29 @@ export default async function handler(req: any, res: any) {
 
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // 1. Save to Supabase (Priority)
+    // Map fields to match the provided Supabase schema
+    const leadData = {
+      full_name,
+      email,
+      company_name: company || business_name || null,
+      role: role || business_type || null,
+      service_interest: service || null,
+      message: message || null,
+      source: source || 'unknown',
+      created_at: new Date().toISOString()
+    };
+
+    // 1. Save to Supabase
     const { error: sbError } = await supabase
       .from('strategy_leads')
-      .insert([
-        {
-          full_name,
-          email,
-          company: company || business_name,
-          role: role || business_type,
-          service_choice: service,
-          message,
-          source: source || 'unknown',
-          business_name,
-          business_type,
-          created_at: new Date().toISOString()
-        }
-      ]);
+      .insert([leadData]);
 
     if (sbError) {
       console.error('Supabase error reported:', sbError.message);
-      return res.status(500).json({ error: 'Failed to save lead to database' });
+      return res.status(500).json({ error: `Database error: ${sbError.message}` });
     }
 
-    // 2. Trigger Resend Notification (Optional - don't fail the whole request if this fails)
+    // 2. Trigger Resend Notification
     if (resendApiKey) {
       try {
         const resend = new Resend(resendApiKey);
@@ -81,8 +79,8 @@ Lead Details:
 ----------------
 Name: ${full_name}
 Email: ${email}
-Company: ${company || business_name || 'N/A'}
-Role: ${role || business_type || 'N/A'}
+Company: ${leadData.company_name || 'N/A'}
+Role/Type: ${leadData.role || 'N/A'}
 Service: ${service || 'Not specified'}
 Source: ${source}
 
@@ -93,9 +91,8 @@ ${message || 'No message provided.'}
         });
       } catch (resendError: any) {
         console.error('Resend notification failed:', resendError.message);
+        // We don't fail the request if just the email fails, since DB succeeded
       }
-    } else {
-      console.warn('Warning: RESEND_API_KEY is missing. No email notification was sent.');
     }
 
     return res.status(200).json({ success: true });
