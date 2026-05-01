@@ -9,11 +9,11 @@ export const FounderBio: React.FC = () => {
 
                     {/* Column 1: The Visual */}
                     <div className="w-full md:w-[40%] flex flex-col items-center md:items-start">
-                        <div className="relative w-full max-w-[240px] mx-auto md:mx-0">
+                        <div className="relative w-full max-w-[280px] mx-auto md:mx-0">
                             <img
                                 src="/images/navilla-bagga.jpg"
                                 alt="Navilla Bagga - Founder of Opound"
-                                className="w-full aspect-square object-cover rounded-full border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)] bg-[#1e293b]"
+                                className="w-full h-auto md:h-[320px] object-cover rounded-2xl border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)] bg-[#1e293b]"
                             />
                             <p className="text-center md:text-left text-[11px] text-slate-500 mt-4 font-medium tracking-wide">
                                 Navilla Bagga · Fractional AI Product Lead & FinTech Systems Architect
