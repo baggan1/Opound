@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Pricing } from './pages/Pricing';
+import { Research } from './pages/Research';
 import { TermsOfService } from './components/TermsOfService';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { BookingModal } from './components/BookingModal';
@@ -97,6 +98,7 @@ const Footer: React.FC<{ onOpenLegal: () => void }> = ({ onOpenLegal }) => (
         <div className="flex flex-wrap justify-center gap-10 text-slate-500 text-sm font-bold uppercase tracking-widest">
           <a href="/#services" className="hover:text-white transition-colors">Services</a>
           <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
+          <a href="/research" className="hover:text-white transition-colors">Research</a>
           <a href="/about" className="hover:text-white transition-colors">About Us</a>
           <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
         </div>
@@ -133,6 +135,7 @@ export default function App() {
               <Route path="/" element={<Home onOpenBooking={() => setIsBookingOpen(true)} onOpenContact={openContact} />} />
               <Route path="/about" element={<About onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/pricing" element={<Pricing onOpenBooking={() => setIsBookingOpen(true)} />} />
+              <Route path="/research" element={<Research onOpenBooking={() => setIsBookingOpen(true)} />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/portfolio" element={<Portfolio />} />
