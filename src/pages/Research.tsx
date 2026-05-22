@@ -28,7 +28,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
         try {
             const response = await fetch('https://formspree.io/f/xykdaqly', {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
@@ -60,7 +60,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
 
                 {/* Main Split Layout */}
                 <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
-                    
+
                     {/* Left Column: Title, Metadata, Abstract */}
                     <div className="flex-1 flex flex-col justify-between py-2">
                         <div>
@@ -130,12 +130,12 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                     <div className="w-full lg:w-[440px] flex flex-col justify-start">
                         {/* Interactive Gate Card */}
                         <div className="bg-[#0b1021] border border-slate-800 rounded-[2.5rem] p-8 md:p-10 shadow-2xl flex flex-col h-full justify-between z-10 sticky top-28">
-                            
+
                             {/* Whitepaper Stylized Visual Cover Mock */}
                             <div className="bg-[#0f172a] rounded-2xl border border-slate-800 p-6 shadow-inner mb-8 text-center relative overflow-hidden group">
                                 <div className="absolute -top-16 -right-16 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl"></div>
                                 <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-                                
+
                                 <div className="text-[9px] font-black text-emerald-400 uppercase tracking-widest mb-3">
                                     Opound Technical Whitepaper
                                 </div>
@@ -160,7 +160,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                     <p className="text-slate-400 text-sm mb-8 leading-relaxed max-w-xs mx-auto">
                                         The whitepaper has been prepared. Click below to download.
                                     </p>
-                                    
+
                                     <div className="space-y-4 w-full">
                                         <a
                                             href="/FIX_Stablecoin_Whitepaper_Opound_2026.pdf"
@@ -285,7 +285,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                 Founder of Opound LLC & Senior FinTech Systems Architect
                             </h4>
                             <p className="text-slate-300 leading-relaxed font-light max-w-4xl text-base">
-                                Navilla Bagga is the founder and Principal Consultant of Opound LLC, an AI and financial technology consulting firm. She brings 15+ years of experience across the full regulated financial services stack: retail brokerage, institutional equities execution, federal mortgage infrastructure, long-only asset management (Wellington Management), and digital asset compliance (Solidus Labs). Opound LLC advises FinTech, digital asset, and regulated financial services firms on AI product strategy, workflow automation, and technology infrastructure. The firm's fractional AI product leadership engagements focus on the intersection of institutional finance operations and emerging technology.
+                                Navilla Bagga is the founder and Principal Consultant of Opound LLC, an AI and financial technology consulting firm. She brings 15+ years of experience across the full regulated financial services stack: retail brokerage, institutional equities execution, federal mortgage infrastructure, buy-side asset management (Wellington Management), and digital asset compliance (Solidus Labs). Opound LLC advises FinTech, digital asset, and regulated financial services firms on AI product strategy, workflow automation, and technology infrastructure. The firm's fractional AI product leadership engagements focus on the intersection of institutional finance operations and emerging technology.
                             </p>
                         </div>
                     </div>
@@ -302,7 +302,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                 If you are a prime brokerage technology leader, digital asset compliance practitioner, or exchange operations specialist, Navilla welcomes direct feedback or collaborative discussion regarding these stablecoin collateral proposals. Let's align on standards.
                             </p>
                         </div>
-                        
+
                         <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full sm:w-auto">
                             <a
                                 href="mailto:navilla@opound.com?subject=FIX%20Stablecoin%20Whitepaper%20Collaboration"
