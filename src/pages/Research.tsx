@@ -158,7 +158,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                     </div>
                                     <h3 className="text-2xl font-black text-white mb-2">Access Granted</h3>
                                     <p className="text-slate-400 text-sm mb-8 leading-relaxed max-w-xs mx-auto">
-                                        The whitepaper has been prepared. Click below to download in your preferred format.
+                                        The whitepaper has been prepared. Click below to download.
                                     </p>
                                     
                                     <div className="space-y-4 w-full">
@@ -169,17 +169,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                             rel="noopener noreferrer"
                                             className="w-full bg-[#00A372] hover:bg-[#008f64] text-white font-bold py-4 px-6 rounded-2xl shadow-xl shadow-[#00A372]/20 transition-all flex items-center justify-center gap-2.5 active:scale-[0.98]"
                                         >
-                                            <Download className="w-5 h-5" /> Download PDF Whitepaper
-                                        </a>
-                                        
-                                        <a
-                                            href="/FIX_Stablecoin_Whitepaper_Opound_2026.docx"
-                                            download
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-800/80 text-slate-300 font-bold py-4 px-6 rounded-2xl transition-all flex items-center justify-center gap-2.5 active:scale-[0.98]"
-                                        >
-                                            <FileText className="w-5 h-5 text-slate-400" /> Download DOCX Version
+                                            <Download className="w-5 h-5" /> Download Whitepaper (PDF)
                                         </a>
                                     </div>
                                 </div>
@@ -188,7 +178,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                     <div className="mb-6">
                                         <h3 className="text-2xl font-black text-white tracking-tight mb-2">Download Whitepaper</h3>
                                         <p className="text-slate-400 text-sm font-light leading-relaxed">
-                                            Provide your details below to receive instant access to the PDF & DOCX formats.
+                                            Provide your details below to receive instant access to the whitepaper.
                                         </p>
                                     </div>
 
@@ -280,7 +270,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                         {/* Author Headshot / Visual */}
                         <div className="w-40 h-40 shrink-0">
                             <img
-                                src="/images/navilla-bagga.jpg"
+                                src="/images/navilla-bagga.png"
                                 alt="Navilla Bagga - Founder of Opound"
                                 className="w-full h-full object-cover rounded-3xl border border-slate-800 bg-slate-900 shadow-xl shadow-emerald-500/2"
                             />
@@ -315,7 +305,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                         
                         <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full sm:w-auto">
                             <a
-                                href="mailto:hello@opound.com?subject=FIX%20Stablecoin%20Whitepaper%20Collaboration"
+                                href="mailto:navilla@opound.com?subject=FIX%20Stablecoin%20Whitepaper%20Collaboration"
                                 className="bg-[#0b1021] hover:bg-slate-900 border border-slate-800 text-slate-200 font-bold px-6 py-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all"
                             >
                                 <Mail className="w-4 h-4 text-emerald-400" /> Contact Direct
