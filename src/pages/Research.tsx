@@ -72,6 +72,9 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.15] tracking-tight mb-6">
                                 FIX Protocol as <br />the Bridge
                             </h1>
+                            <p className="text-sm font-bold text-emerald-500/80 mb-6 tracking-wide">
+                                Version 1.0 — Draft for FIX Trading Community Review, May 2026
+                            </p>
                             <p className="text-xl md:text-2xl font-bold text-slate-300 leading-normal mb-8 max-w-2xl">
                                 Standardizing Stablecoin Collateral and Settlement Workflows for Regulated Financial Markets
                             </p>
@@ -98,10 +101,10 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                     Section 1: The Collateral Gap (Abstract)
                                 </h3>
                                 <p className="text-slate-300 text-lg leading-relaxed font-light mb-6 border-l-2 border-emerald-500/50 pl-6 py-1">
-                                    Stablecoins — dollar-pegged tokens including USDT, USDC, and DAI — collectively represent over $160 billion in circulating supply. On derivatives exchanges, they serve as the primary margin currency: a trader opening a 10x leveraged Bitcoin futures position posts USDC or USDT as initial margin, variation margin calls are denominated in stablecoins, and liquidations settle in stablecoins. Despite this scale, the institutional workflow governing stablecoin collateral lacks the standardization that has defined professional fixed income and equity markets for decades.
+                                    Stablecoins — dollar-pegged digital assets led by USDT (~$190 billion), USDC (~$76 billion), and the DAI/USDS ecosystem (~$5 billion) — collectively represent over $320 billion in circulating supply as of May 2026, a figure that has doubled in under 18 months. On derivatives exchanges, they serve as the primary margin currency: a trader opening a 10x leveraged Bitcoin futures position posts USDC or USDT as initial margin, variation margin calls are denominated in stablecoins, and liquidations settle in stablecoins. Despite this scale, the institutional workflow governing stablecoin collateral lacks the standardization that has defined professional fixed income and equity markets for decades.
                                 </p>
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    This whitepaper proposes applying the Financial Information Exchange (FIX) Protocol to stablecoin collateral management. By bridging TradFi repo standards with digital asset realities, the paper outlines a six-stage workflow and introduces six new tag extensions to ensure regulator-legible auditability.
+                                    This paper proposes applying the FIX Protocol to stablecoin collateral and settlement workflows, drawing direct parallels with TradFi repo market structure. It classifies stablecoin collateral as open repo — not overnight or term — maps a six-stage workflow to existing FIX message types, and proposes eight new tag extensions covering on-chain identity, settlement proof, oracle pricing, initial margin ratio, and reserve attestation. The framework addresses GENIUS Act proof-of-reserve requirements, the settlement finality constraints identified by the Chicago Fed (Letter No. 519, February 2026), and regulatory alignment across FinCEN, MiCA, SAB 122, and Basel III.
                                 </p>
                             </div>
                         </div>
@@ -111,16 +114,22 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                             <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Key Technical Themes</h4>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-400">
                                 <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> 6-Stage Workflow Mapping
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> 6-Stage Collateral Workflow Mapping
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> 6 Custom FIX Tag Extensions
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> 8 Proposed FIX Tag Extensions
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Smart Contract Custodial Reframing
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Open Repo Structure — Stablecoin Classification
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> SEC SAB 122 & MiCA Alignment
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Smart Contract as Custodian Reframing
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> GENIUS Act, SAB 122 & MiCA Regulatory Alignment
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Settlement Finality Constraints (Chicago Fed Letter No. 519)
                                 </li>
                             </ul>
                         </div>
@@ -252,8 +261,8 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                     </form>
 
                                     <div className="pt-5 border-t border-slate-900 flex items-center justify-center gap-2">
-                                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                                            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Professional Grade Privacy & Compliance
+                                        <p className="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 leading-normal text-center">
+                                            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" /> Your details are used only to send the whitepaper and are not shared with third parties.
                                         </p>
                                     </div>
                                 </div>
