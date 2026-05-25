@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, ArrowRight, Loader2, CheckCircle2, ShieldCheck, Download, FileText, ArrowUpRight, BookOpen } from 'lucide-react';
+import { ResearchContactModal } from '../components/ResearchContactModal';
 
 interface ResearchProps {
     onOpenBooking: () => void;
@@ -7,6 +8,7 @@ interface ResearchProps {
 
 export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [isContactOpen, setIsContactOpen] = useState(false);
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [company, setCompany] = useState('');
@@ -313,12 +315,12 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full sm:w-auto">
-                            <a
-                                href="mailto:navilla@opound.com?subject=FIX%20Stablecoin%20Whitepaper%20Collaboration"
-                                className="bg-[#0b1021] hover:bg-slate-900 border border-slate-800 text-slate-200 font-bold px-6 py-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all"
+                            <button
+                                onClick={() => setIsContactOpen(true)}
+                                className="bg-[#0b1021] hover:bg-slate-900 border border-slate-800 text-slate-200 font-bold px-6 py-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
                             >
                                 <Mail className="w-4 h-4 text-emerald-400" /> Contact Direct
-                            </a>
+                            </button>
                             <button
                                 onClick={onOpenBooking}
                                 className="bg-[#00A372] hover:bg-[#008f64] text-white font-bold px-6 py-4 rounded-xl text-xs uppercase tracking-wider text-center transition-all"
@@ -330,6 +332,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                 </div>
 
             </div>
+            <ResearchContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
         </div>
     );
 };
