@@ -202,10 +202,11 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
 
                                         <div>
                                             <input
+                                                required
                                                 type="text"
                                                 value={fullName}
                                                 onChange={(e) => setFullName(e.target.value)}
-                                                placeholder="Full Name (Optional)"
+                                                placeholder="Full Name *"
                                                 className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 transition-all placeholder:text-slate-600 shadow-inner"
                                             />
                                         </div>
@@ -216,7 +217,7 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
                                                 type="email"
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Institutional Email *"
+                                                placeholder="Email *"
                                                 className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 transition-all placeholder:text-slate-600 shadow-inner"
                                             />
                                         </div>
