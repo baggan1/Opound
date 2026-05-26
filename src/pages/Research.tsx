@@ -202,11 +202,10 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
 
                                         <div>
                                             <input
-                                                required
                                                 type="text"
                                                 value={fullName}
                                                 onChange={(e) => setFullName(e.target.value)}
-                                                placeholder="Full Name *"
+                                                placeholder="Full Name (Optional)"
                                                 className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 transition-all placeholder:text-slate-600 shadow-inner"
                                             />
                                         </div>
@@ -224,22 +223,20 @@ export const Research: React.FC<ResearchProps> = ({ onOpenBooking }) => {
 
                                         <div>
                                             <input
-                                                required
                                                 type="text"
                                                 value={company}
                                                 onChange={(e) => setCompany(e.target.value)}
-                                                placeholder="Company Name *"
+                                                placeholder="Company Name (Optional)"
                                                 className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 transition-all placeholder:text-slate-600 shadow-inner"
                                             />
                                         </div>
 
                                         <div>
                                             <input
-                                                required
                                                 type="text"
                                                 value={role}
                                                 onChange={(e) => setRole(e.target.value)}
-                                                placeholder="Role / Title *"
+                                                placeholder="Role / Title (Optional)"
                                                 className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl px-5 py-4 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 transition-all placeholder:text-slate-600 shadow-inner"
                                             />
                                         </div>
